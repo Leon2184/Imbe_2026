@@ -17,9 +17,9 @@
         }
 
         :root {
-            --orange: #f15a24;        /* naranja principal */
+            --orange: #f15a24;
             --orange-dark: #d44d1a;
-            --black: #0a0a0a;          /* negro absoluto */
+            --black: #0a0a0a;
             --black-light: #1a1a1a;
             --gray-dark: #2a2a2a;
             --gray-medium: #3a3a3a;
@@ -69,8 +69,9 @@
         }
 
         .header-flex {
-           width: 96%;          /* antes 90% */
-    max-width: 1400px;   /* antes 1200px */  display: flex;
+            width: 96%;
+            max-width: 1400px;
+            display: flex;
             justify-content: space-between;
             align-items: center;
         }
@@ -82,7 +83,7 @@
             text-decoration: none;
         }
         .logo-img {
-           height: 60px;
+            height: 60px;
             width: auto;
             transition: transform 0.3s ease;
         }
@@ -126,10 +127,10 @@
             width: 100%;
         }
 
-         .btn {
+        .btn {
             display: inline-block;
-            background-color: rgb(248, 93, 4); /* color naranja */
-            color: white; /* letras blancas */
+            background-color: rgb(248, 93, 4);
+            color: white;
             font-weight: 700;
             padding: 0.9rem 2.5rem;
             border-radius: 60px;
@@ -163,7 +164,7 @@
             color: var(--orange);
         }
 
-       /* ===== HERO BANNER ===== */
+        /* ===== HERO BANNER ===== */
         .hero-banner {
             position: relative;
             width: 100%;
@@ -204,15 +205,14 @@
             background: rgba(0, 0, 0, 0.4);
         }
 
-       @keyframes slide {
-           0%, 16% { transform: translateX(0); }        /* Slide 1 visible */
-           20%, 36% { transform: translateX(-20%); }    /* Slide 2 visible */
-           40%, 56% { transform: translateX(-40%); }    /* Slide 3 visible */
-           60%, 76% { transform: translateX(-60%); }    /* Slide 4 visible */
-           80%, 96% { transform: translateX(-80%); }    /* Slide 5 visible */
-           100% { transform: translateX(0); }           /* Vuelve al inicio */
-       }
-        
+        @keyframes slide {
+            0%, 16% { transform: translateX(0); }
+            20%, 36% { transform: translateX(-20%); }
+            40%, 56% { transform: translateX(-40%); }
+            60%, 76% { transform: translateX(-60%); }
+            80%, 96% { transform: translateX(-80%); }
+            100% { transform: translateX(0); }
+        }
 
         .hero-banner .container {
             position: relative;
@@ -234,17 +234,17 @@
             color: var(--white);
         }
 
-        /* ===== SERVICIOS (6 TARJETAS) ===== */
+        /* ===== SERVICIOS (8 TARJETAS) ===== */
         .servicios-profesionales {
             padding: 5rem 0;
             background: var(--white);
         }
-       .servicios-grid{
-           display: grid;
-           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-           gap: 2rem;
-       }
-        
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
         .servicio-card {
             background: var(--white);
             border-radius: 20px;
@@ -346,7 +346,7 @@
             color: #ccc;
         }
 
-        /* ===== CLIENTES CARRUSEL (fondo claro) ===== */
+        /* ===== CLIENTES CARRUSEL ===== */
         .clients-section {
             padding: 5rem 0;
             background: var(--offwhite);
@@ -388,15 +388,12 @@
             transform: scale(1.1);
             box-shadow: 0 15px 30px rgba(241,90,36,0.15);
         }
-        .client-logo:hover img {
-            filter: grayscale(0);
-        }
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* ===== PROYECTOS SLIDER MODERNO (SWIPER) ===== */
+        /* ===== PROYECTOS SLIDER ===== */
         .proyectos-section {
             padding: 5rem 0;
             background: var(--black-light);
@@ -449,10 +446,6 @@
             font-size: 1.5rem;
             margin-bottom: 0.4rem;
         }
-        .project-overlay p {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
         .swiper-button-next, .swiper-button-prev {
             color: var(--orange) !important;
             background: rgba(0,0,0,0.6);
@@ -474,10 +467,9 @@
         }
         .swiper-pagination-bullet-active {
             opacity: 1;
-            background: var(--orange) !important;
         }
 
-        /* ===== CONTACTO PROFESIONAL (fondo negro, naranja) ===== */
+        /* ===== CONTACTO PROFESIONAL ===== */
         .contacto-pro {
             background: var(--black);
             color: white;
@@ -531,7 +523,7 @@
         }
         .contacto-form {
             background: var(--gray-dark);
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 23px;
             box-shadow: var(--shadow);
         }
@@ -583,8 +575,43 @@
             margin-top: 1rem;
             text-align: center;
         }
+        /* Mensaje de éxito */
+        .success-message {
+            background-color: #4caf50;
+            color: white;
+            padding: 0.8rem;
+            border-radius: 50px;
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: bold;
+            display: none;
+        }
 
-        /* ===== FOOTER (negro) ===== */
+        /* ===== BOTÓN FLOTANTE WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b359;
+        }
+
+        /* ===== FOOTER ===== */
         .main-footer {
             background: var(--black);
             color: #bbb;
@@ -604,19 +631,17 @@
             gap: 12px;
             max-width: 420px;
         }
-        .footer-title{
-            display:block;
-            color:#fff;
-            font-weight:600;
-            margin-bottom:6px;
+        .footer-title {
+            display: block;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 6px;
         }
-
-        .footer-desc{
-            font-size:.85rem;
-            color:#aaa;
-            line-height:1.4;
+        .footer-desc {
+            font-size: .85rem;
+            color: #aaa;
+            line-height: 1.4;
         }
-            
         .footer-logo {
             height: 60px;
             filter: brightness(0) invert(1);
@@ -657,6 +682,7 @@
             .hero-content h1 { font-size: 2.5rem; }
             .expertise-details { grid-template-columns: 1fr; }
             .servicios-grid { grid-template-columns: 1fr; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
         }
         @media (max-width: 480px) {
             .logo-img { height: 45px; }
@@ -671,7 +697,7 @@
 <header class="main-header">
     <div class="container header-flex">
         <div class="logo-area">
-           <img src="img/logo1.png" id="iniciologo" alt="IMBE Logo" class="logo-img">
+            <img src="img/logo1.png" id="iniciologo" alt="IMBE Logo" class="logo-img">
             <span class="brand-name">Ingeniería y Multiservicios Benítez</span>
         </div>
         <nav class="main-nav">
@@ -688,35 +714,33 @@
     </div>
 </header>
 
- <!-- Hero Section Estilo Profesional -->
-    <section class="hero-banner">
-        <div class="hero-slider">
-            <div class="slider-track">
-                <div class="slide" style="background-image: url('img/hero/hero1.jpg');"></div>
-                <div class="slide" style="background-image: url('img/hero/hero2.jpg');"></div>
-                <div class="slide" style="background-image: url('img/hero/hero3.jpg');"></div>
-                <div class="slide" style="background-image: url('img/hero/hero4.jpg');"></div>
-                <div class="slide" style="background-image: url('img/hero/hero5.jpg');"></div>
-            </div>
+<!-- Hero Section -->
+<section class="hero-banner">
+    <div class="hero-slider">
+        <div class="slider-track">
+            <div class="slide" style="background-image: url('img/hero/hero1.jpg');"></div>
+            <div class="slide" style="background-image: url('img/hero/hero2.jpg');"></div>
+            <div class="slide" style="background-image: url('img/hero/hero3.jpg');"></div>
+            <div class="slide" style="background-image: url('img/hero/hero4.jpg');"></div>
+            <div class="slide" style="background-image: url('img/hero/hero5.jpg');"></div>
         </div>
-        <div class="container">
-            <div class="hero-content">
-                <h1>Ingeniería, Tecnología y Servicios Multimedia</h1>
-                <p class="hero-subtitle">Proyectos llave en mano con asesoría de ingenieros especialistas. 
-                    Suministro, instalación, puesta en marcha y desarrollo de software a medida.</p>
-                <br>
-                <a href="#contacto" class="btn">Solicitar presupuesto</a>
-            </div>
+    </div>
+    <div class="container">
+        <div class="hero-content">
+            <h1>Ingeniería, Tecnología y Servicios Multimedia</h1>
+            <p class="hero-subtitle">Proyectos llave en mano con asesoría de ingenieros especialistas. 
+                Suministro, instalación, puesta en marcha y desarrollo de software a medida.</p>
+            <br>
+            <a href="#contacto" class="btn">Solicitar presupuesto</a>
         </div>
-    </section>
+    </div>
+</section>
 
-
-<!-- 6 Servicios profesionales -->
+<!-- 8 Servicios profesionales -->
 <section id="servicios" class="servicios-profesionales">
     <div class="container">
         <h2>Nuestros servicios</h2>
         <div class="servicios-grid">
-            <!-- 1 -->
             <div class="servicio-card">
                 <div class="servicio-img"><img src="img/servicios/met1.png" alt="Meteorología"></div>
                 <div class="servicio-content">
@@ -725,7 +749,6 @@
                     <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <!-- 2 -->
             <div class="servicio-card">
                 <div class="servicio-img"><img src="img/servicios/electrico.png" alt="Instalaciones eléctricas"></div>
                 <div class="servicio-content">
@@ -734,16 +757,14 @@
                     <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <!-- 3 -->
             <div class="servicio-card">
                 <div class="servicio-img"><img src="img/servicios/cctv.png" alt="Seguridad electrónica"></div>
                 <div class="servicio-content">
                     <h3>Sistemas de Seguridad</h3>
-                    <p>CCTV, control de acceso, alarmas y circuitos cerrados para industria,empresas, negocios y residencial.</p>
+                    <p>CCTV, control de acceso, alarmas y circuitos cerrados para industria, empresas, negocios y residencial.</p>
                     <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <!-- 4 -->
             <div class="servicio-card">
                 <div class="servicio-img"><img src="img/servicios/diseño.png" alt="Desarro Web"></div>
                 <div class="servicio-content">
@@ -752,7 +773,6 @@
                     <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <!-- 5 -->
             <div class="servicio-card">
                 <div class="servicio-img"><img src="img/servicios/solar.png" alt="Energías renovables"></div>
                 <div class="servicio-content">
@@ -761,7 +781,6 @@
                     <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <!-- 6 -->
             <div class="servicio-card">
                 <div class="servicio-img"><img src="img/servicios/domotica.png" alt="Domotica"></div>
                 <div class="servicio-content">
@@ -770,7 +789,6 @@
                     <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-               <!-- 7 -->
             <div class="servicio-card">
                 <div class="servicio-img"><img src="img/servicios/albañileria.png" alt="Albañileria"></div>
                 <div class="servicio-content">
@@ -779,12 +797,11 @@
                     <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-                <!-- 8 -->
             <div class="servicio-card">
                 <div class="servicio-img"><img src="img/servicios/plomeria.png" alt="Plomeria"></div>
                 <div class="servicio-content">
-                    <h3>Plomeria "</h3>
-                    <p>Implementamos soluciones inteligent la protección del hogar.</p>
+                    <h3>Plomería</h3>
+                    <p>Instalación y reparación de sistemas hidráulicos y sanitarios, garantizando eficiencia y durabilidad.</p>
                     <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -792,7 +809,7 @@
     </div>
 </section>
 
-<!-- Expertise (negro/naranja) -->
+<!-- Expertise -->
 <section id="nosotros" class="expertise-section">
     <div class="container">
         <div class="expertise-content">
@@ -800,7 +817,7 @@
             <p class="highlight-text">Contamos con más de 15 años de experiencia en soluciones de ingeniería, automatización y servicios industriales. Desarrollamos proyectos llave en mano con altos estándares de calidad, garantizando eficiencia, seguridad y cumplimiento en tiempos de entrega.</p>
             <div class="expertise-details">
                 <div class="expertise-item">
-                    <h3>Mision</h3>
+                    <h3>Misión</h3>
                     <p>Brindamos servicios integrales de ingeniería y multiservicios con altos estándares de calidad, mediante personal especializado, tecnología adecuada y procesos eficientes, garantizando confianza y satisfacción en nuestros clientes.</p>
                 </div>
                 <div class="expertise-item">
@@ -812,88 +829,38 @@
     </div>
 </section>
 
-<!-- Clientes (carrusel infinito) -->
+<!-- Clientes carrusel -->
 <section id="clientes" class="clients-section">
     <div class="container">
         <h2>Nuestros Clientes</h2>
         <p style="margin-bottom: 2rem;">Instituciones que han confiado en nosotros:</p>
         <div class="clients-carousel">
             <div class="client-track">
-                <!-- imágenes de ejemplo (reemplazar con logos reales) -->
                 <div class="client-logo"><img src="img/cfe.png" alt="CFE"></div>
                 <div class="client-logo"><img src="img/pemex.png" alt="Pemex"></div>
                 <div class="client-logo"><img src="img/imt.png" alt="IMT"></div>
                 <div class="client-logo"><img src="img/imta.png" alt="IMTA"></div>
                 <div class="client-logo"><img src="img/LOGO CONTRURAMA.jpg" alt="Contrurama"></div>
                 <div class="client-logo"><img src="img/spa.png" alt="SPA"></div>
-                <!-- duplicados para efecto infinito (el js clonará automáticamente, pero dejamos unos) -->
             </div>
         </div>
     </div>
 </section>
 
-<!-- Proyectos con Swiper (moderno) -->
+<!-- Proyectos Swiper -->
 <section id="proyectos" class="proyectos-section">
     <div class="container">
         <h2>Proyectos destacados</h2>
         <div class="swiper proyectos-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="img/proyectos/1.JPG" alt="Proyecto 1">
-                    <div class="project-overlay">
-                        <h3>Instalaciones Eléctricas</h3>
-                        <p>Instalación eléctrica Residencial · Cliente: SAP Flor de Mayo</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/proyectos/2.JPG" alt="Proyecto 2">
-                    <div class="project-overlay">
-                        <h3>Instalaciones Eléctricas . Cliente: Pemex</h3>
-                        <p>Control 220V para alimentación de radar</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/proyectos/3.png" alt="Proyecto 3">
-                    <div class="project-overlay">
-                        <h3>Video Vigilancia</h3>
-                        <p>Terminal Maritima Dos Bocas</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/proyectos/4.png" alt="Proyecto 4">
-                    <div class="project-overlay">
-                        <h3>Automatización</h3>
-                        <p>Armado de Pistones de Control de torque Nissan</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/proyectos/5.png" alt="Proyecto 5">
-                    <div class="project-overlay">
-                        <h3>Proyecto LLave Mano</h3>
-                        <p>Estanque captacion de agua para riego</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/proyectos/6.png" alt="Proyecto 6">
-                    <div class="project-overlay">
-                        <h3>Pararrayos</h3>
-                        <p>Mantenimiento a Sistema de Pararrayos</p>
-                    </div>
-                </div>
-                 <div class="swiper-slide">
-                    <img src="img/proyectos/7.png" alt="Proyecto 7">
-                    <div class="project-overlay">
-                        <h3>Seguridad CCTV</h3>
-                        <p>CCTV y control de monitoreo remoto/p>
-                    </div>
-                </div>
-                 <div class="swiper-slide">
-                    <img src="img/proyectos/8.png" alt="Proyecto 8">
-                    <div class="project-overlay">
-                        <h3>Automatización</h3>
-                        <p>Control de llenado de tinaco autonomo</p>
-                    </div>
-                </div>
+                <div class="swiper-slide"><img src="img/proyectos/1.JPG" alt="Proyecto 1"><div class="project-overlay"><h3>Instalaciones Eléctricas</h3><p>Instalación eléctrica Residencial · Cliente: SAP Flor de Mayo</p></div></div>
+                <div class="swiper-slide"><img src="img/proyectos/2.JPG" alt="Proyecto 2"><div class="project-overlay"><h3>Instalaciones Eléctricas</h3><p>Control 220V para alimentación de radar · Cliente: Pemex</p></div></div>
+                <div class="swiper-slide"><img src="img/proyectos/3.png" alt="Proyecto 3"><div class="project-overlay"><h3>Video Vigilancia</h3><p>Terminal Marítima Dos Bocas</p></div></div>
+                <div class="swiper-slide"><img src="img/proyectos/4.png" alt="Proyecto 4"><div class="project-overlay"><h3>Automatización</h3><p>Armado de Pistones de Control de torque Nissan</p></div></div>
+                <div class="swiper-slide"><img src="img/proyectos/5.png" alt="Proyecto 5"><div class="project-overlay"><h3>Proyecto Llave en Mano</h3><p>Estanque captación de agua para riego</p></div></div>
+                <div class="swiper-slide"><img src="img/proyectos/6.png" alt="Proyecto 6"><div class="project-overlay"><h3>Pararrayos</h3><p>Mantenimiento a Sistema de Pararrayos</p></div></div>
+                <div class="swiper-slide"><img src="img/proyectos/7.png" alt="Proyecto 7"><div class="project-overlay"><h3>Seguridad CCTV</h3><p>CCTV y control de monitoreo remoto</p></div></div>
+                <div class="swiper-slide"><img src="img/proyectos/8.png" alt="Proyecto 8"><div class="project-overlay"><h3>Automatización</h3><p>Control de llenado de tinaco autónomo</p></div></div>
             </div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev"></div>
@@ -902,7 +869,7 @@
     </div>
 </section>
 
-<!-- CONTACTO PROFESIONAL (nuevo) -->
+<!-- CONTACTO PROFESIONAL con envío asíncrono -->
 <section id="contacto" class="contacto-pro">
     <div class="container">
         <div class="contacto-grid">
@@ -920,22 +887,14 @@
                 </div>
             </div>
             <div class="contacto-form">
-               <form name="contacto" method="POST" data-netlify="true" action="/" id="contactForm">
-
-                   <input type="hidden" name="form-name" value="contacto">
-                 
-                   <input type="text" name="name" placeholder="Nombre" required>
-                 
-                   <input type="email" name="email" placeholder="Correo" required>
-                 
-                   <textarea name="message" placeholder="Mensaje" required></textarea>
-                 
-                   <button type="submit">
-                       Enviar mensaje
-                   </button>
-                 
-                 </form>
-
+                <form name="contacto" method="POST" data-netlify="true" id="contactForm">
+                    <input type="hidden" name="form-name" value="contacto">
+                    <input type="text" name="name" placeholder="Nombre" required>
+                    <input type="email" name="email" placeholder="Correo" required>
+                    <textarea name="message" placeholder="Mensaje" required></textarea>
+                    <button type="submit">Enviar mensaje</button>
+                    <div class="success-message" id="successMessage">✨ ¡Gracias por contactarnos! ✨</div>
+                </form>
             </div>
         </div>
     </div>
@@ -947,13 +906,9 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <img src="img/logo_fondo.png" alt="IMBE" class="footer-logo">
-            <div><span class="footer-title">Ingeniería y Multiservicios Benítez</span>
-                <p class="footer-desc">
-                        Somos una empresa orgullosamente mexicana dedicada a 
-                        proveer soluciones de ingeniería brindando servicios 
-                        integrales.
-                </p>
-            </div>  
+                <div><span class="footer-title">Ingeniería y Multiservicios Benítez</span>
+                    <p class="footer-desc">Somos una empresa orgullosamente mexicana dedicada a proveer soluciones de ingeniería brindando servicios integrales.</p>
+                </div>
             </div>
             <div>© <span id="currentYear"></span> IMBE. Reservados todos los derechos.</div>
         </div>
@@ -963,85 +918,99 @@
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<!-- Botón flotante WhatsApp -->
+<a href="https://wa.me/529381083498?text=Hola%20IMBE%2C%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20sus%20servicios." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
 (function(){
+    // Año dinámico
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-// Año dinámico
-document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-// menú móvil
-const toggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.main-nav');
-
-if(toggle){
-toggle.addEventListener('click', ()=> nav.classList.toggle('active'));
-}
-
-// smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-anchor.addEventListener('click', function(e){
-e.preventDefault();
-const target = document.querySelector(this.getAttribute('href'));
-if(target){
-window.scrollTo({top: target.offsetTop - 80, behavior:'smooth'});
-nav.classList.remove('active');
-}
-});
-});
-
-// swiper
-new Swiper('.proyectos-swiper',{
-slidesPerView:1,
-spaceBetween:25,
-loop:true,
-autoplay:{delay:5000, disableOnInteraction:false},
-pagination:{el:'.swiper-pagination', clickable:true},
-navigation:{nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev'},
-breakpoints:{
-640:{slidesPerView:2},
-1024:{slidesPerView:3}
-}
-});
-
-// carrusel clientes
-const track = document.querySelector('.client-track');
-if(track){
-track.innerHTML += track.innerHTML;
-}
-
-})();
-</script>
-
-<!-- live reload (opcional) -->
-<script>
-    if ('WebSocket' in window) {
-        (function () {
-            function refreshCSS() {
-                var sheets = [].slice.call(document.getElementsByTagName("link"));
-                var head = document.getElementsByTagName("head")[0];
-                for (var i = 0; i < sheets.length; ++i) {
-                    var elem = sheets[i];
-                    var parent = elem.parentElement || head;
-                    parent.removeChild(elem);
-                    var rel = elem.rel;
-                    if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                        var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-                    }
-                    parent.appendChild(elem);
-                }
-            }
-            var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-            var address = protocol + window.location.host + window.location.pathname + '/ws';
-            var socket = new WebSocket(address);
-            socket.onmessage = function (msg) {
-                if (msg.data == 'reload') window.location.reload();
-                else if (msg.data == 'refreshcss') refreshCSS();
-            };
-        })();
+    // menú móvil
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.main-nav');
+    if(toggle){
+        toggle.addEventListener('click', ()=> nav.classList.toggle('active'));
     }
+
+    // smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+        anchor.addEventListener('click', function(e){
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target){
+                window.scrollTo({top: target.offsetTop - 80, behavior:'smooth'});
+                nav.classList.remove('active');
+            }
+        });
+    });
+
+    // swiper proyectos
+    new Swiper('.proyectos-swiper',{
+        slidesPerView:1,
+        spaceBetween:25,
+        loop:true,
+        autoplay:{delay:5000, disableOnInteraction:false},
+        pagination:{el:'.swiper-pagination', clickable:true},
+        navigation:{nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev'},
+        breakpoints:{
+            640:{slidesPerView:2},
+            1024:{slidesPerView:3}
+        }
+    });
+
+    // carrusel clientes
+    const track = document.querySelector('.client-track');
+    if(track){
+        track.innerHTML += track.innerHTML;
+    }
+
+    // ========== ENVÍO ASÍNCRONO DEL FORMULARIO ==========
+    const form = document.getElementById('contactForm');
+    const successDiv = document.getElementById('successMessage');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();  // Evita recarga de página
+
+        // Mostrar mensaje de carga (opcional)
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerText;
+        submitBtn.innerText = 'Enviando...';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('/', {
+                method: 'POST',
+                body: formData
+            });
+
+            // Netlify normalmente responde con 200 OK si todo fue bien
+            if (response.ok) {
+                // Mostrar mensaje de éxito
+                successDiv.style.display = 'block';
+                // Limpiar el formulario
+                form.reset();
+                // Ocultar mensaje después de 5 segundos
+                setTimeout(() => {
+                    successDiv.style.display = 'none';
+                }, 5000);
+            } else {
+                alert('Hubo un error al enviar el mensaje. Por favor inténtalo de nuevo.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error de conexión. Inténtalo más tarde.');
+        } finally {
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+})();
 </script>
 </body>
 </html>
