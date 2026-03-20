@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMBE · Soluciones técnicas integrales</title>
+    <!-- Fuentes, iconos y librerías -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES: NEGRO + NARANJA ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #f15a24;        /* naranja principal */
+            --orange-dark: #d44d1a;
+            --black: #0a0a0a;          /* negro absoluto */
+            --black-light: #1a1a1a;
+            --gray-dark: #2a2a2a;
+            --gray-medium: #3a3a3a;
+            --white: #ffffff;
+            --offwhite: #f5f5f5;
+            --text-light: #dddddd;
+            --shadow: 0 15px 30px -10px rgba(0,0,0,0.3);
+            --transition: all 0.25s ease-in-out;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #222;
+            background-color: var(--offwhite);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 96%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--orange);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== HEADER NEGRO ===== */
+        .main-header {
+            background: #0a0a0a;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(9, 102, 29, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-flex {
+           width: 96%;          /* antes 90% */
+    max-width: 1400px;   /* antes 1200px */  display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .logo-img {
+           height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .brand-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .main-nav a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        .main-nav a:hover {
+            color: var(--orange);
+        }
+        .main-nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            bottom: -6px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        .main-nav a:hover:after {
+            width: 100%;
+        }
+
+         .btn {
+            display: inline-block;
+            background-color: rgb(248, 93, 4); /* color naranja */
+            color: white; /* letras blancas */
+            font-weight: 700;
+            padding: 0.9rem 2.5rem;
+            border-radius: 60px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 16px rgba(240, 219, 198, 0.6);
+        }
+
+        .btn-contact-nav {
+            background: var(--orange);
+            color: var(--black) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 700;
+        }
+        .btn-contact-nav:hover {
+            background: var(--white);
+            color: var(--black) !important;
+        }
+        .btn-contact-nav:after {
+            display: none;
+        }
+
+        /* menu toggle móvil */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--orange);
+        }
+
+       /* ===== HERO BANNER ===== */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            max-height: 550px;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider-track {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            animation: slide 20s infinite ease-in-out;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+       @keyframes slide {
+           0%, 16% { transform: translateX(0); }        /* Slide 1 visible */
+           20%, 36% { transform: translateX(-20%); }    /* Slide 2 visible */
+           40%, 56% { transform: translateX(-40%); }    /* Slide 3 visible */
+           60%, 76% { transform: translateX(-60%); }    /* Slide 4 visible */
+           80%, 96% { transform: translateX(-80%); }    /* Slide 5 visible */
+           100% { transform: translateX(0); }           /* Vuelve al inicio */
+       }
+        
+
+        .hero-banner .container {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            color: var(--white);
+            text-align: center;
+            font-size: 1.5rem;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .btn-primary {
+            color: var(--white);
+        }
+
+        /* ===== SERVICIOS (6 TARJETAS) ===== */
+        .servicios-profesionales {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+       .servicios-grid{
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+           gap: 2rem;
+       }
+        
+        .servicio-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+        .servicio-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 40px rgba(241,90,36,0.15);
+        }
+        .servicio-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        .servicio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        .servicio-card:hover .servicio-img img {
+            transform: scale(1.1);
+        }
+        .servicio-content {
+            padding: 1.8rem 1.5rem 2rem;
+        }
+        .servicio-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.75rem;
+        }
+        .servicio-content p {
+            color: #4a4a4a;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .btn-servicio {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--orange);
+            color: var(--black);
+            font-weight: 600;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        .btn-servicio i {
+            font-size: 0.9rem;
+        }
+        .btn-servicio:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* ===== EXPERTISE (fondo negro) ===== */
+        .expertise-section {
+            padding: 5rem 0;
+            background: var(--black);
+            color: var(--white);
+        }
+        .expertise-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .highlight-text {
+            font-size: 1.3rem;
+            margin: 2rem 0;
+            color: var(--text-light);
+        }
+        .expertise-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 100%;
+        }
+        .expertise-item {
+            background: rgba(255,255,255,0.07);
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 5px solid var(--orange);
+            text-align: left;
+            max-width: 100%;
+        }
+        .expertise-item h3 {
+            color: var(--orange);
+            margin-bottom: 0.8rem;
+            font-size: 1.6rem;
+        }
+        .expertise-item p {
+            color: #ccc;
+        }
+
+        /* ===== CLIENTES CARRUSEL (fondo claro) ===== */
+        .clients-section {
+            padding: 5rem 0;
+            background: var(--offwhite);
+        }
+        .clients-carousel {
+            overflow: hidden;
+            margin-top: 3rem;
+            position: relative;
+        }
+        .client-track {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            width: max-content;
+            animation: scroll 30s linear infinite;
+            padding: 1rem 0;
+        }
+        .client-logo {
+            flex: 0 0 auto;
+            width: 180px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        .client-logo img {
+            max-width: 100%;
+            max-height: 70px;
+            object-fit: contain;
+            filter: none;
+            transition: var(--transition);
+        }
+        .client-logo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(241,90,36,0.15);
+        }
+        .client-logo:hover img {
+            filter: grayscale(0);
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ===== PROYECTOS SLIDER MODERNO (SWIPER) ===== */
+        .proyectos-section {
+            padding: 5rem 0;
+            background: var(--black-light);
+            color: white;
+        }
+        .proyectos-section h2 {
+            color: white;
+        }
+        .proyectos-section h2:after {
+            background: var(--orange);
+        }
+        .swiper {
+            width: 100%;
+            padding: 2rem 0 4rem;
+        }
+        .swiper-slide {
+            background: #2a2a2a;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.6);
+            transition: transform 0.3s;
+            height: 400px;
+            position: relative;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        .swiper-slide:hover img {
+            transform: scale(1.05);
+        }
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            color: white;
+            padding: 2rem 1.5rem;
+            transform: translateY(20%);
+            transition: transform 0.4s;
+        }
+        .swiper-slide:hover .project-overlay {
+            transform: translateY(0);
+        }
+        .project-overlay h3 {
+            color: var(--orange);
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+        .project-overlay p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--orange) !important;
+            background: rgba(0,0,0,0.6);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 1.5rem;
+        }
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: var(--orange);
+            color: black !important;
+        }
+        .swiper-pagination-bullet {
+            background: var(--orange) !important;
+            opacity: 0.6;
+        }
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: var(--orange) !important;
+        }
+
+        /* ===== CONTACTO PROFESIONAL (fondo negro, naranja) ===== */
+        .contacto-pro {
+            background: var(--black);
+            color: white;
+            padding: 5rem 0;
+        }
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .contacto-info h3 {
+            font-size: 2rem;
+            color: var(--orange);
+            margin-bottom: 2rem;
+        }
+        .contacto-info p {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+        .contacto-info i {
+            color: var(--orange);
+            font-size: 1.6rem;
+            width: 40px;
+        }
+        .redes-sociales {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+        }
+        .redes-sociales a {
+            color: var(--orange);
+            background: var(--gray-dark);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        .redes-sociales a:hover {
+            background: var(--gray-medium);
+            color: var(--offwhite);
+            transform: translateY(-5px);
+        }
+        .contacto-form {
+            background: var(--gray-dark);
+            padding: 1.5rem;
+            border-radius: 23px;
+            box-shadow: var(--shadow);
+        }
+        .contacto-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .contacto-form input,
+        .contacto-form textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: var(--black-light);
+            border: 2px solid #333;
+            border-radius: 60px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: white;
+            transition: var(--transition);
+        }
+        .contacto-form textarea {
+            border-radius: 30px;
+            resize: vertical;
+            min-height: 120px;
+        }
+        .contacto-form input:focus,
+        .contacto-form textarea:focus {
+            border-color: var(--orange);
+            outline: none;
+            background: #000;
+        }
+        .contacto-form button {
+            background: var(--orange);
+            color: var(--black);
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+        }
+        .contacto-form button:hover {
+            background: white;
+            color: black;
+        }
+        .contacto-form .legal-note {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* ===== FOOTER (negro) ===== */
+        .main-footer {
+            background: var(--black);
+            color: #bbb;
+            padding: 2.5rem 0 1.5rem;
+            border-top: 2px solid var(--orange);
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            max-width: 420px;
+        }
+        .footer-title{
+            display:block;
+            color:#fff;
+            font-weight:600;
+            margin-bottom:6px;
+        }
+
+        .footer-desc{
+            font-size:.85rem;
+            color:#aaa;
+            line-height:1.4;
+        }
+            
+        .footer-logo {
+            height: 60px;
+            filter: brightness(0) invert(1);
+        }
+        .footer-copyright {
+            text-align: center;
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .brand-name { font-size: 1.2rem; }
+            .main-nav ul { gap: 1.2rem; }
+            .contacto-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .main-nav {
+                position: fixed;
+                top: 85px;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                padding: 2rem;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                z-index: 999;
+                box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+            }
+            .main-nav.active { transform: translateY(0); }
+            .main-nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            .hero-content h1 { font-size: 2.5rem; }
+            .expertise-details { grid-template-columns: 1fr; }
+            .servicios-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .logo-img { height: 45px; }
+            .brand-name { font-size: 1rem; }
+            .btn { padding: 0.8rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header negro con detalles naranja -->
+<header class="main-header">
+    <div class="container header-flex">
+        <div class="logo-area">
+           <img src="img/logo1.png" id="iniciologo" alt="IMBE Logo" class="logo-img">
+            <span class="brand-name">Ingeniería y Multiservicios Benítez</span>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Expertise</a></li>
+                <li><a href="#clientes">Clientes</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto" class="btn-contact-nav">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    </div>
+</header>
+
+ <!-- Hero Section Estilo Profesional -->
+    <section class="hero-banner">
+        <div class="hero-slider">
+            <div class="slider-track">
+                <div class="slide" style="background-image: url('img/hero/hero1.jpg');"></div>
+                <div class="slide" style="background-image: url('img/hero/hero2.jpg');"></div>
+                <div class="slide" style="background-image: url('img/hero/hero3.jpg');"></div>
+                <div class="slide" style="background-image: url('img/hero/hero4.jpg');"></div>
+                <div class="slide" style="background-image: url('img/hero/hero5.jpg');"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ingeniería, Tecnología y Servicios Multimedia</h1>
+                <p class="hero-subtitle">Proyectos llave en mano con asesoría de ingenieros especialistas. 
+                    Suministro, instalación, puesta en marcha y desarrollo de software a medida.</p>
+                <br>
+                <a href="#contacto" class="btn">Solicitar presupuesto</a>
+            </div>
+        </div>
+    </section>
+
+
+<!-- 6 Servicios profesionales -->
+<section id="servicios" class="servicios-profesionales">
+    <div class="container">
+        <h2>Nuestros servicios</h2>
+        <div class="servicios-grid">
+            <!-- 1 -->
+            <div class="servicio-card">
+                <div class="servicio-img"><img src="img/servicios/met1.png" alt="Meteorología"></div>
+                <div class="servicio-content">
+                    <h3>Meteorología</h3>
+                    <p>Suministro, instalación y puesta en marcha de estaciones meteorológicas y sensores.</p>
+                    <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="servicio-card">
+                <div class="servicio-img"><img src="img/servicios/electrico.png" alt="Instalaciones eléctricas"></div>
+                <div class="servicio-content">
+                    <h3>Instalaciones Eléctricas</h3>
+                    <p>Diseño, suministro, montaje de tableros industriales y mantenimiento integral residencial.</p>
+                    <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="servicio-card">
+                <div class="servicio-img"><img src="img/servicios/cctv.png" alt="Seguridad electrónica"></div>
+                <div class="servicio-content">
+                    <h3>Sistemas de Seguridad</h3>
+                    <p>CCTV, control de acceso, alarmas y circuitos cerrados para industria,empresas, negocios y residencial.</p>
+                    <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- 4 -->
+            <div class="servicio-card">
+                <div class="servicio-img"><img src="img/servicios/diseño.png" alt="Desarro Web"></div>
+                <div class="servicio-content">
+                    <h3>Páginas Web y Sistemas SCADA</h3>
+                    <p>Desarrollo de sitios web profesionales, tiendas online y paneles de control, Soluciones de monitoreo en tiempo real, adquisición de datos y control de procesos industriales.</p>
+                    <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- 5 -->
+            <div class="servicio-card">
+                <div class="servicio-img"><img src="img/servicios/solar.png" alt="Energías renovables"></div>
+                <div class="servicio-content">
+                    <h3>Energías Renovables</h3>
+                    <p>Instalación de paneles solares, sistemas fotovoltaicos y eficiencia energética.</p>
+                    <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- 6 -->
+            <div class="servicio-card">
+                <div class="servicio-img"><img src="img/servicios/domotica.png" alt="Domotica"></div>
+                <div class="servicio-content">
+                    <h3>Domotica "Casas Inteligentes"</h3>
+                    <p>Implementamos soluciones inteligentes para el control automatizado de iluminación, climatización y seguridad, optimizando el confort, la eficiencia energética y la protección del hogar.</p>
+                    <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+               <!-- 7 -->
+            <div class="servicio-card">
+                <div class="servicio-img"><img src="img/servicios/albañileria.png" alt="Albañileria"></div>
+                <div class="servicio-content">
+                    <h3>Albañilería Residencial</h3>
+                    <p>Construcción, remodelación y mantenimiento de viviendas, incluyendo muros, pisos, ampliaciones y acabados de alta calidad.</p>
+                    <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+                <!-- 8 -->
+            <div class="servicio-card">
+                <div class="servicio-img"><img src="img/servicios/plomeria.png" alt="Plomeria"></div>
+                <div class="servicio-content">
+                    <h3>Plomeria "</h3>
+                    <p>Implementamos soluciones inteligent la protección del hogar.</p>
+                    <a href="#" class="btn-servicio">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Expertise (negro/naranja) -->
+<section id="nosotros" class="expertise-section">
+    <div class="container">
+        <div class="expertise-content">
+            <h2>Nuestro Expertise</h2>
+            <p class="highlight-text">Contamos con más de 15 años de experiencia en soluciones de ingeniería, automatización y servicios industriales. Desarrollamos proyectos llave en mano con altos estándares de calidad, garantizando eficiencia, seguridad y cumplimiento en tiempos de entrega.</p>
+            <div class="expertise-details">
+                <div class="expertise-item">
+                    <h3>Mision</h3>
+                    <p>Brindamos servicios integrales de ingeniería y multiservicios con altos estándares de calidad, mediante personal especializado, tecnología adecuada y procesos eficientes, garantizando confianza y satisfacción en nuestros clientes.</p>
+                </div>
+                <div class="expertise-item">
+                    <h3>Visión</h3>
+                    <p>Ser una empresa regional reconocida por la excelencia en servicios de ingeniería, innovación tecnológica y compromiso con nuestros clientes, consolidándonos como una opción confiable y en constante crecimiento</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Clientes (carrusel infinito) -->
+<section id="clientes" class="clients-section">
+    <div class="container">
+        <h2>Nuestros Clientes</h2>
+        <p style="margin-bottom: 2rem;">Instituciones que han confiado en nosotros:</p>
+        <div class="clients-carousel">
+            <div class="client-track">
+                <!-- imágenes de ejemplo (reemplazar con logos reales) -->
+                <div class="client-logo"><img src="img/cfe.png" alt="CFE"></div>
+                <div class="client-logo"><img src="img/pemex.png" alt="Pemex"></div>
+                <div class="client-logo"><img src="img/imt.png" alt="IMT"></div>
+                <div class="client-logo"><img src="img/imta.png" alt="IMTA"></div>
+                <div class="client-logo"><img src="img/LOGO CONTRURAMA.jpg" alt="Contrurama"></div>
+                <div class="client-logo"><img src="img/spa.png" alt="SPA"></div>
+                <!-- duplicados para efecto infinito (el js clonará automáticamente, pero dejamos unos) -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Proyectos con Swiper (moderno) -->
+<section id="proyectos" class="proyectos-section">
+    <div class="container">
+        <h2>Proyectos destacados</h2>
+        <div class="swiper proyectos-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/proyectos/1.JPG" alt="Proyecto 1">
+                    <div class="project-overlay">
+                        <h3>Instalaciones Eléctricas</h3>
+                        <p>Instalación eléctrica Residencial · Cliente: SAP Flor de Mayo</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/proyectos/2.JPG" alt="Proyecto 2">
+                    <div class="project-overlay">
+                        <h3>Instalaciones Eléctricas . Cliente: Pemex</h3>
+                        <p>Control 220V para alimentación de radar</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/proyectos/3.png" alt="Proyecto 3">
+                    <div class="project-overlay">
+                        <h3>Video Vigilancia</h3>
+                        <p>Terminal Maritima Dos Bocas</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/proyectos/4.png" alt="Proyecto 4">
+                    <div class="project-overlay">
+                        <h3>Automatización</h3>
+                        <p>Armado de Pistones de Control de torque Nissan</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/proyectos/5.png" alt="Proyecto 5">
+                    <div class="project-overlay">
+                        <h3>Proyecto LLave Mano</h3>
+                        <p>Estanque captacion de agua para riego</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/proyectos/6.png" alt="Proyecto 6">
+                    <div class="project-overlay">
+                        <h3>Pararrayos</h3>
+                        <p>Mantenimiento a Sistema de Pararrayos</p>
+                    </div>
+                </div>
+                 <div class="swiper-slide">
+                    <img src="img/proyectos/7.png" alt="Proyecto 7">
+                    <div class="project-overlay">
+                        <h3>Seguridad CCTV</h3>
+                        <p>CCTV y control de monitoreo remoto/p>
+                    </div>
+                </div>
+                 <div class="swiper-slide">
+                    <img src="img/proyectos/8.png" alt="Proyecto 8">
+                    <div class="project-overlay">
+                        <h3>Automatización</h3>
+                        <p>Control de llenado de tinaco autonomo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACTO PROFESIONAL (nuevo) -->
+<section id="contacto" class="contacto-pro">
+    <div class="container">
+        <div class="contacto-grid">
+            <div class="contacto-info">
+                <h3>Conversemos sobre tu proyecto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Cd del Carmen, Campeche</p>
+                <p><i class="fas fa-phone-alt"></i> +52 938 108 3498</p>
+                <p><i class="fas fa-envelope"></i> imbecontacto@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Lun - Vie: 8:00 am - 6:00 pm</p>
+                <div class="redes-sociales">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="contacto-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nombre completo *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Correo electrónico *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Teléfono">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Cuéntanos tu requerimiento..."></textarea>
+                    </div>
+                    <button type="submit">Enviar mensaje <i class="fas fa-paper-plane"></i></button>
+                    <p class="legal-note">Tus datos están seguros, no compartimos información.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="img/logo_fondo.png" alt="IMBE" class="footer-logo">
+            <div><span class="footer-title">Ingeniería y Multiservicios Benítez</span>
+                <p class="footer-desc">
+                        Somos una empresa orgullosamente mexicana dedicada a 
+                        proveer soluciones de ingeniería brindando servicios 
+                        integrales.
+                </p>
+            </div>  
+            </div>
+            <div>© <span id="currentYear"></span> IMBE. Reservados todos los derechos.</div>
+        </div>
+        <div class="footer-copyright">
+            <p>Diseño con identidad naranja y negra · Soluciones que energizan tu negocio.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts mejorados -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script>
+    (function() {
+        // Año dinámico
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Menú móvil
+        const toggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.main-nav');
+        toggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                    nav.classList.remove('active');
+                }
+            });
+        });
+
+        // Inicializar Swiper (proyectos)
+        const swiper = new Swiper('.proyectos-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 25,
+            loop: true,
+            autoplay: { delay: 5000, disableOnInteraction: false },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+
+        // Carrusel de clientes (clonado para efecto infinito)
+        const track = document.querySelector('.client-track');
+        if (track) {
+            const logos = track.innerHTML;
+            track.innerHTML = logos + logos; // doble para efecto continuo
+        }
+
+        // Formulario demo (solo simulación)
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const btn = this.querySelector('button');
+                btn.innerHTML = 'Enviando...';
+                setTimeout(() => {
+                    btn.innerHTML = '¡Mensaje enviado!';
+                    this.reset();
+                    setTimeout(() => btn.innerHTML = 'Enviar mensaje <i class="fas fa-paper-plane"></i>', 2000);
+                }, 1200);
+            });
+        }
+    })();
+</script>
+
+<!-- live reload (opcional) -->
+<script>
+    if ('WebSocket' in window) {
+        (function () {
+            function refreshCSS() {
+                var sheets = [].slice.call(document.getElementsByTagName("link"));
+                var head = document.getElementsByTagName("head")[0];
+                for (var i = 0; i < sheets.length; ++i) {
+                    var elem = sheets[i];
+                    var parent = elem.parentElement || head;
+                    parent.removeChild(elem);
+                    var rel = elem.rel;
+                    if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                        var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                    }
+                    parent.appendChild(elem);
+                }
+            }
+            var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+            var address = protocol + window.location.host + window.location.pathname + '/ws';
+            var socket = new WebSocket(address);
+            socket.onmessage = function (msg) {
+                if (msg.data == 'reload') window.location.reload();
+                else if (msg.data == 'refreshcss') refreshCSS();
+            };
+        })();
+    }
+</script>
+</body>
+</html>
