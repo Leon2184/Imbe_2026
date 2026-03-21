@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>IMBE | Plomería Integral – Instalación y mantenimiento hidrosanitario</title>
+    <meta name="description" content="Servicios profesionales de plomería: instalación de sistemas hidrosanitarios, reparación de fugas, calentadores, bombas de agua, drenajes y mantenimiento preventivo. Soluciones confiables.">
+    <meta name="keywords" content="plomería, instalaciones hidrosanitarias, reparación de fugas, calentadores, bombas de agua, drenaje, IMBE, Campeche">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --orange: #f15a24;
+            --orange-dark: #d44d1a;
+            --black: #0a0a0a;
+            --black-light: #1a1a1a;
+            --gray-dark: #2a2a2a;
+            --gray-medium: #3a3a3a;
+            --white: #ffffff;
+            --offwhite: #f5f5f5;
+            --text-light: #dddddd;
+            --shadow: 0 15px 30px -10px rgba(0,0,0,0.3);
+            --transition: all 0.25s ease-in-out;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #222;
+            background-color: var(--offwhite);
+            line-height: 1.6;
+        }
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--orange);
+            margin-top: 0.5rem;
+        }
+        /* Header */
+        .main-header {
+            background: #0a0a0a;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-flex {
+            width: 96%;
+            max-width: 1400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .logo-img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--orange);
+            white-space: nowrap;
+        }
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .main-nav a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        .main-nav a:hover { color: var(--orange); }
+        .main-nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            bottom: -6px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        .main-nav a:hover:after { width: 100%; }
+        .btn-contact-nav {
+            background: var(--orange);
+            color: var(--black) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 700;
+        }
+        .btn-contact-nav:hover {
+            background: var(--white);
+            color: var(--black) !important;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--orange);
+        }
+        /* Hero con imagen de fondo */
+        .plumbing-hero {
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/mas/plomer.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 5rem 0;
+            color: white;
+            text-align: center;
+        }
+        .plumbing-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--orange);
+        }
+        .plumbing-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .btn-cotizar {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--black);
+            font-weight: 700;
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 12px rgba(241,90,36,0.4);
+        }
+        .btn-cotizar:hover {
+            background: var(--black);
+            color: white;
+        }
+        .btn-regresar {
+            display: inline-block;
+            margin-top: 2rem;
+            background: var(--black);
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .btn-regresar:hover {
+            background: var(--orange);
+            color: var(--black);
+        }
+        /* Secciones */
+        .section {
+            padding: 4rem 0;
+            background: white;
+        }
+        .section-alt {
+            background: var(--offwhite);
+            padding: 3rem;
+        }
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-left: 5px solid var(--orange);
+        }
+        .card i {
+            font-size: 2rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        .card p {
+            color: #4a4a4a;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 2rem 0;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: var(--orange);
+            color: var(--black);
+            font-weight: 700;
+        }
+        tr:hover {
+            background: #f9f9f9;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b359;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--orange);
+            color: var(--black);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .main-footer {
+            background: var(--black);
+            color: #bbb;
+            padding: 2.5rem 0 1.5rem;
+            border-top: 2px solid var(--orange);
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .footer-logo { height: 60px; background: #0a0a0a; border-radius: 8px; }
+        .footer-copyright { text-align: center; padding-top: 2rem; font-size: 0.9rem; color: #777; }
+        @media (max-width: 992px) {
+            .brand-name { font-size: 1.2rem; }
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .main-nav {
+                position: fixed;
+                top: 85px;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                padding: 2rem;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                z-index: 999;
+            }
+            .main-nav.active { transform: translateY(0); }
+            .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+            .plumbing-hero h1 { font-size: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .logo-img { height: 45px; }
+            .brand-name { font-size: 0.9rem; white-space: normal; }
+            h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<header class="main-header">
+    <div class="header-flex">
+        <div class="logo-area">
+            <img src="img/logo1.png" alt="Logo IMBE" class="logo-img" loading="lazy" onerror="this.src='https://placehold.co/200x80?text=IMBE'">
+            <span class="brand-name">Ingeniería y Multiservicios Benítez</span>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#nosotros">Expertise</a></li>
+                <li><a href="index.html#clientes">Clientes</a></li>
+                <li><a href="index.html#proyectos">Proyectos</a></li>
+                <li><a href="index.html#contacto" class="btn-contact-nav">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></div>
+    </div>
+</header>
+
+<main>
+    <section class="plumbing-hero">
+        <div class="container">
+            <h1>Plomería Integral</h1>
+            <p>Instalación, reparación y mantenimiento de sistemas hidrosanitarios, agua caliente, drenajes y bombas. Soluciones profesionales con materiales de calidad y garantía.</p>
+            <a href="#contacto" class="btn-cotizar" style="margin-top: 1.5rem; display: inline-block;">Solicita tu servicio</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Servicios que ofrecemos</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Instalaciones hidrosanitarias</h3>
+                    <p>Diseño e instalación de redes de agua potable, drenaje sanitario y pluvial en obra nueva o remodelaciones. Uso de materiales certificados.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-wrench"></i>
+                    <h3>Reparación de fugas</h3>
+                    <p>Detección y reparación de fugas visibles y ocultas en muros, pisos y jardines. Utilizamos tecnología termográfica para localización precisa.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Calentadores de agua</h3>
+                    <p>Instalación, mantenimiento y reparación de calentadores de gas, eléctricos y solares. Revisión de válvulas, termostatos y tuberías.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-pump-water"></i>
+                    <h3>Bombas y presurización</h3>
+                    <p>Instalación de bombas periféricas, sumergibles, hidroneumáticos y sistemas de presión constante para garantizar abasto en toda la vivienda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt">
+        <div class="container">
+            <h2>Materiales y sistemas que manejamos</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <i class="fas fa-pipe"></i>
+                    <h3>Tuberías de calidad</h3>
+                    <p>CPVC, PPR, cobre y PVC para agua fría y caliente. Conexiones con termofusión o soldadura según normativa.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-toilet"></i>
+                    <h3>Muebles sanitarios</h3>
+                    <p>Instalación de wc, lavabos, regaderas, mingitorios y accesorios de marcas reconocidas con garantía.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-drain"></i>
+                    <h3>Sistemas de drenaje</h3>
+                    <p>Coladeras, registros, trampas de grasa, sistemas de bombeo de aguas residuales y conexión a red municipal.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Diagnóstico avanzado</h3>
+                    <p>Cámaras termográficas, micrófonos electrónicos y pruebas de presión para localizar fugas sin romper.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Aplicaciones por sector</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <i class="fas fa-home"></i>
+                    <h3>Residencial</h3>
+                    <p>Instalaciones nuevas, remodelaciones de baños y cocinas, reparaciones de fugas, mantenimiento de calentadores.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-building"></i>
+                    <h3>Edificios y condominios</h3>
+                    <p>Redes hidráulicas verticales, sistemas de bombeo compartido, drenajes pluviales y mantenimiento preventivo.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-store"></i>
+                    <h3>Comercios y restaurantes</h3>
+                    <p>Trampas de grasa, instalaciones para cocinas industriales, lavavajillas y sistemas de agua caliente de alto rendimiento.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Industrial</h3>
+                    <p>Redes de agua de proceso, sistemas contra incendios, tratamiento de aguas residuales y mantenimiento especializado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt">
+        <div class="container">
+            <h2>Tabla comparativa: Tipos de reparación</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de fuga</th>
+                        <th>Detección</th>
+                        <th>Reparación típica</th>
+                        <th>Tiempo estimado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fuga visible (grifo, conexión)</td>
+                        <td>Inspección visual</td>
+                        <td>Cambio de empaque, cartucho o conexión</td>
+                        <td>1 – 2 horas</td>
+                    </tr>
+                    <tr>
+                        <td>Fuga oculta en muro</td>
+                        <td>Termografía, micrófonos, pruebas de presión</td>
+                        <td>Apertura controlada, reparación de tubería, reposición de acabado</td>
+                        <td>1 – 2 días</td>
+                    </tr>
+                    <tr>
+                        <td>Fuga en tinaco o cisterna</td>
+                        <td>Inspección con colorante o prueba de flotador</td>
+                        <td>Cambio de flotador, válvula de llenado o sellado de fisuras</td>
+                        <td>2 – 4 horas</td>
+                    </tr>
+                    <tr>
+                        <td>Obstrucción de drenaje</td>
+                        <td>Inspección con cámara</td>
+                        <td>Limpieza con equipo hidroneumático, desazolve mecánico</td>
+                        <td>1 – 3 horas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Beneficios de contratar a IMBE</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Garantía en trabajos</h3>
+                    <p>Respaldamos nuestras instalaciones y reparaciones con garantía por escrito en materiales y mano de obra.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Respuesta rápida</h3>
+                    <p>Atención prioritaria para emergencias de fugas y obstrucciones, con disponibilidad en horarios flexibles.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Equipo profesional</h3>
+                    <p>Herramientas especializadas y personal capacitado para todo tipo de instalaciones hidrosanitarias.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Cotización transparente</h3>
+                    <p>Presupuesto detallado antes de iniciar, sin costos ocultos y con opciones de materiales según tu presupuesto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" style="background: var(--black-light); padding: 4rem 0; color: white;">
+        <div class="container">
+            <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+                <h2 style="color: white;">¿Necesitas un plomero de confianza?</h2>
+                <p style="margin: 1rem 0 2rem;">Contáctanos hoy y recibe atención personalizada. Solucionamos problemas de agua, drenaje y calentadores con calidad y rapidez.</p>
+                <a href="https://wa.me/529381083498?text=Hola%20IMBE%2C%20me%20interesa%20el%20servicio%20de%20plomería." class="btn-cotizar" style="background: #25d366; color: black; margin-right: 1rem;"><i class="fab fa-whatsapp"></i> WhatsApp directo</a>
+                <a href="index.html#contacto" class="btn-cotizar" style="background: var(--orange); color: black;">Formulario de contacto</a>
+                <div style="margin-top: 2rem;">
+                    <a href="index.html#servicios" class="btn-regresar"><i class="fas fa-arrow-left"></i> Volver a servicios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="img/logo1.png" alt="IMBE" class="footer-logo" loading="lazy" onerror="this.src='https://placehold.co/100x100?text=IMBE'">
+                <div><span class="footer-title" style="color:white; font-weight:600;">Ingeniería y Multiservicios Benítez</span>
+                    <p class="footer-desc">Soluciones integrales en plomería, construcción e ingeniería.</p>
+                </div>
+            </div>
+            <div>© <span id="currentYear"></span> IMBE. Todos los derechos reservados.</div>
+        </div>
+        <div class="footer-copyright">
+            <p>Agua segura, instalaciones confiables. Servicio profesional garantizado.</p>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/529381083498?text=Hola%20IMBE%2C%20me%20interesa%20el%20servicio%20de%20plomería" class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.main-nav');
+    if(toggle){
+        toggle.addEventListener('click', () => nav.classList.toggle('active'));
+    }
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 300) backBtn.classList.add('show');
+        else backBtn.classList.remove('show');
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+</script>
+</body>
+</html>
