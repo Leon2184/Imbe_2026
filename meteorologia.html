@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>IMBE | Meteorología Profesional – Estaciones y sensores de alta precisión</title>
+    <meta name="description" content="Soluciones en meteorología industrial y científica: estaciones automáticas, sensores de viento, temperatura, humedad, radiación solar y más. Instalación, calibración y monitoreo 24/7.">
+    <meta name="keywords" content="meteorología, estaciones meteorológicas, sensores climáticos, monitoreo ambiental, IMBE, Campeche">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛅</text></svg>">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --orange: #f15a24;
+            --orange-dark: #d44d1a;
+            --black: #0a0a0a;
+            --black-light: #1a1a1a;
+            --gray-dark: #2a2a2a;
+            --gray-medium: #3a3a3a;
+            --white: #ffffff;
+            --offwhite: #f5f5f5;
+            --text-light: #dddddd;
+            --shadow: 0 15px 30px -10px rgba(0,0,0,0.3);
+            --transition: all 0.25s ease-in-out;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #222;
+            background-color: var(--offwhite);
+            line-height: 1.6;
+        }
+        .container {
+             width: 90%;
+             max-width: 1100px;   /* antes 1400 */
+             margin: 0 auto;
+             padding: 0 20px;     /* espacio interno izq y der */  
+        }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--orange);
+            margin-top: 0.5rem;
+        }
+        /* Header (mismo estilo que index) */
+        .main-header {
+            background: #0a0a0a;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-flex {
+            width: 96%;
+            max-width: 1400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .logo-img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--orange);
+            white-space: nowrap;
+        }
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .main-nav a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        .main-nav a:hover { color: var(--orange); }
+        .main-nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            bottom: -6px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        .main-nav a:hover:after { width: 100%; }
+        .btn-contact-nav {
+            background: var(--orange);
+            color: var(--black) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 700;
+        }
+        .btn-contact-nav:hover {
+            background: var(--white);
+            color: var(--black) !important;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--orange);
+        }
+        /* Hero meteorología */
+        .meteo-hero {
+            background: linear-gradient(135deg, #0a2f44 0%, #0a0a0a 100%);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+        }
+        .meteo-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--orange);
+        }
+        .meteo-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* Sección sensores y variables */
+        .sensors-section, .variables-section, .benefits-section, .applications-section {
+            padding: 4rem 0;
+            background: white;
+        }
+        .variables-section { background: var(--offwhite); }
+        .sensors-grid, .variables-grid, .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .benefits-grid{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
+            gap: 2rem;
+            margin-top: 2rem;
+
+        }
+
+        .sensor-card, .variable-card, .benefit-card, .app-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-left: 5px solid var(--orange);
+        }
+        .sensor-card h3, .variable-card h3, .benefit-card h3, .app-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        .sensor-card i, .variable-card i {
+            font-size: 2rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+        .btn-cotizar {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--black);
+            font-weight: 700;
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 12px rgba(241,90,36,0.4);
+        }
+        .btn-cotizar:hover {
+            background: var(--black);
+            color: white;
+        }
+        .btn-regresar {
+            display: inline-block;
+            margin-top: 2rem;
+            background: var(--black);
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .btn-regresar:hover {
+            background: var(--orange);
+            color: var(--black);
+        }
+        /* Tabla de variables adicional */
+        .variable-table {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: var(--orange);
+            color: var(--black);
+            font-weight: 700;
+        }
+        tr:hover {
+            background: #f9f9f9;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b359;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--orange);
+            color: var(--black);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .main-footer {
+            background: var(--black);
+            color: #bbb;
+            padding: 2.5rem 0 1.5rem;
+            border-top: 2px solid var(--orange);
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .footer-logo { height: 60px; background: #0a0a0a; border-radius: 8px; }
+        .footer-copyright { text-align: center; padding-top: 2rem; font-size: 0.9rem; color: #777; }
+        @media (max-width: 992px) {
+            .brand-name { font-size: 1.2rem; }
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .main-nav {
+                position: fixed;
+                top: 85px;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                padding: 2rem;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                z-index: 999;
+            }
+            .main-nav.active { transform: translateY(0); }
+            .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+            .meteo-hero h1 { font-size: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .logo-img { height: 45px; }
+            .brand-name { font-size: 0.9rem; white-space: normal; }
+            h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<header class="main-header">
+    <div class="header-flex">
+        <div class="logo-area">
+            <img src="img/logo1.png" alt="Logo IMBE" class="logo-img" loading="lazy" onerror="this.src='https://placehold.co/200x80?text=IMBE'">
+            <span class="brand-name">Ingeniería y Multiservicios Benítez</span>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#nosotros">Expertise</a></li>
+                <li><a href="index.html#clientes">Clientes</a></li>
+                <li><a href="index.html#proyectos">Proyectos</a></li>
+                <li><a href="index.html#contacto" class="btn-contact-nav">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></div>
+    </div>
+</header>
+
+<main>
+    <section class="meteo-hero">
+        <div class="container">
+            <h1>Meteorología Profesional</h1>
+            <p>Estaciones automáticas, sensores de última generación y monitoreo en tiempo real para sectores industrial, marítimo, agrícola e investigación.</p>
+            <a href="#contacto" class="btn-cotizar" style="margin-top: 1.5rem; display: inline-block;">Solicitar asesoría técnica</a>
+        </div>
+    </section>
+
+    <section class="sensors-section">
+        <div class="container">
+            <h2>Sensores que instalamos</h2>
+            <p>Contamos con una amplia gama de sensores de alta precisión, calibrados bajo estándares internacionales, adaptables a cualquier condición ambiental.</p>
+            <div class="sensors-grid">
+                <div class="sensor-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Anemómetros</h3>
+                    <p>Medición de velocidad y dirección del viento. Sensores ultrasónicos y de copas para aplicaciones en altura, costa e industria.</p>
+                </div>
+                <div class="sensor-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Temperatura y Humedad</h3>
+                    <p>Sensores de temperatura ambiental (termómetros de resistencia Pt100) y humedad relativa con protección contra radiación solar.</p>
+                </div>
+                <div class="sensor-card">
+                    <i class="fas fa-cloud-rain"></i>
+                    <h3>Pluviómetros</h3>
+                    <p>Pluviómetros de balancín, electrónicos o de pesada, para registro de precipitación pluvial con resolución 0.1 mm.</p>
+                </div>
+                <div class="sensor-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Radiación Solar</h3>
+                    <p>Piranómetros, pirheliómetros y sensores de luz visible para medir radiación global, difusa y horas de insolación.</p>
+                </div>
+                <div class="sensor-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Presión Atmosférica</h3>
+                    <p>Barómetros digitales de alta precisión para monitoreo de presión barométrica, tendencias y alertas meteorológicas.</p>
+                </div>
+                <div class="sensor-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Calidad del Aire</h3>
+                    <p>Sensores de partículas (PM2.5, PM10), gases (CO, SO2, NOx) y ozono, ideales para normativas ambientales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="variables-section">
+        <div class="container">
+            <h2>Variables que monitoreamos</h2>
+            <p>Nuestras estaciones pueden registrar decenas de parámetros simultáneamente, con almacenamiento local y transmisión en tiempo real.</p>
+            <div class="variable-table">
+                <table>
+                    <thead>
+                        <tr><th>Variable</th><th>Rango típico</th><th>Aplicación principal</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Velocidad del viento</td><td>0 – 75 m/s</td><td>Seguridad marítima, energía eólica</td></tr>
+                        <tr><td>Dirección del viento</td><td>0 – 360°</td><td>Navegación, dispersión de contaminantes</td></tr>
+                        <tr><td>Temperatura ambiente</td><td>-40 a +60 °C</td><td>Agricultura, climatología</td></tr>
+                        <tr><td>Humedad relativa</td><td>0 – 100%</td><td>Control de procesos, confort</td></tr>
+                        <tr><td>Precipitación</td><td>0 – 500 mm/h</td><td>Hidrología, alerta de inundaciones</td></tr>
+                        <tr><td>Radiación solar global</td><td>0 – 2000 W/m²</td><td>Energías renovables, evapotranspiración</td></tr>
+                        <tr><td>Presión atmosférica</td><td>600 – 1100 hPa</td><td>Pronóstico meteorológico, aviación</td></tr>
+                        <tr><td>Punto de rocío</td><td>-40 a +50 °C</td><td>Agroindustria, prevención de heladas</td></tr>
+                        <tr><td>Evapotranspiración</td><td>Calculada (mm/día)</td><td>Riego de precisión, estudios hídricos</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 1rem;">Además, integramos sensores de nivel de agua, temperatura del suelo, conductividad eléctrica, CO₂, y más según requerimientos del proyecto.</p>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <h2>Beneficios de nuestras soluciones meteorológicas</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--orange); margin-bottom: 1rem;"></i>
+                    <h3>Datos confiables 24/7</h3>
+                    <p>Equipos con respaldo energético y transmisión redundante (radio, celular, satélite) para asegurar continuidad operativa.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-microchip" style="font-size: 2rem; color: var(--orange); margin-bottom: 1rem;"></i>
+                    <h3>Integración con SCADA</h3>
+                    <p>Compatibilidad con sistemas de control industrial, plataformas IoT y dashboards personalizados. Visualización en tiempo real desde cualquier lugar.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-tools" style="font-size: 2rem; color: var(--orange); margin-bottom: 1rem;"></i>
+                    <h3>Mantenimiento y calibración</h3>
+                    <p>Servicio de calibración anual, mantenimiento preventivo y correctivo con técnicos certificados, garantizando trazabilidad.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: var(--orange); margin-bottom: 1rem;"></i>
+                    <h3>Alertas automáticas</h3>
+                    <p>Configuración de alarmas por umbrales (vientos fuertes, lluvias intensas) con notificaciones por correo, SMS o telegram.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="applications-section">
+        <div class="container">
+            <h2>Aplicaciones industriales y científicas</h2>
+            <div class="apps-grid">
+                <div class="app-card">
+                    <h3>🏭 Sector energético</h3>
+                    <p>Monitoreo de recurso eólico y solar para parques renovables, evaluación de impacto ambiental y predicción de generación.</p>
+                </div>
+                <div class="app-card">
+                    <h3>🚢 Marítimo y portuario</h3>
+                    <p>Estaciones en muelles, plataformas y embarcaciones para seguridad de maniobras, oleaje y condiciones de viento.</p>
+                </div>
+                <div class="app-card">
+                    <h3>🌾 Agricultura de precisión</h3>
+                    <p>Redes de estaciones agrometeorológicas para optimización de riego, control de heladas y gestión de cultivos.</p>
+                </div>
+                <div class="app-card">
+                    <h3>🏙️ Monitoreo urbano</h3>
+                    <p>Redes de sensores de calidad del aire y variables climáticas para alertas tempranas y planeación urbana.</p>
+                </div>
+                <div class="app-card">
+                    <h3>🔬 Investigación y educación</h3>
+                    <p>Equipos de alta precisión para proyectos de cambio climático, hidrología, meteorología sinóptica y estudios atmosféricos.</p>
+                </div>
+                <div class="app-card">
+                    <h3>🛢️ Industria petrolera</h3>
+                    <p>Monitoreo de vientos, oleaje y condiciones extremas para seguridad operativa en instalaciones costa afuera y terrestres.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" style="background: var(--black-light); padding: 4rem 0; color: white;">
+        <div class="container">
+            <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+                <h2 style="color: white;">¿Necesitas una estación meteorológica a la medida?</h2>
+                <p style="margin: 1rem 0 2rem;">Contáctanos para recibir asesoría personalizada, cotización sin compromiso y conocer casos de éxito.</p>
+                <a href="https://wa.me/529381083498?text=Hola%20IMBE%2C%20me%20interesa%20el%20servicio%20de%20meteorolog%C3%ADa%20y%20requiero%20informaci%C3%B3n." class="btn-cotizar" style="background: #25d366; color: black; margin-right: 1rem;"><i class="fab fa-whatsapp"></i> WhatsApp directo</a>
+                <a href="index.html#contacto" class="btn-cotizar" style="background: var(--orange); color: black;">Formulario de contacto</a>
+                <div style="margin-top: 2rem;">
+                    <a href="index.html#servicios" class="btn-regresar"><i class="fas fa-arrow-left"></i> Volver a servicios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="img/logo1.png" alt="IMBE" class="footer-logo" loading="lazy" onerror="this.src='https://placehold.co/100x100?text=IMBE'">
+                <div><span class="footer-title" style="color:white; font-weight:600;">Ingeniería y Multiservicios Benítez</span>
+                    <p class="footer-desc">Soluciones integrales en ingeniería, meteorología y automatización.</p>
+                </div>
+            </div>
+            <div>© <span id="currentYear"></span> IMBE. Todos los derechos reservados.</div>
+        </div>
+        <div class="footer-copyright">
+            <p>Más de 15 años brindando tecnología confiable en Campeche y todo México.</p>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/529381083498?text=Hola%20IMBE%2C%20me%20interesa%20el%20servicio%20de%20meteorolog%C3%ADa" class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.main-nav');
+    if(toggle){
+        toggle.addEventListener('click', () => nav.classList.toggle('active'));
+    }
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 300) backBtn.classList.add('show');
+        else backBtn.classList.remove('show');
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+</script>
+</body>
+</html>
