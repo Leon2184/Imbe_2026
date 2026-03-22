@@ -132,9 +132,11 @@
             cursor: pointer;
             color: var(--orange);
         }
-        /* Hero */
+
+        
+        /* Hero con imagen de fondo y overlay oscuro, totalmente responsive */
         .security-hero {
-            background: linear-gradient(135deg, #1a2a2a 0%, #0a0a0a 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('img/mas/cctv.png') center/cover no-repeat;
             padding: 4rem 0;
             color: white;
             text-align: center;
@@ -348,6 +350,10 @@
             .main-nav.active { transform: translateY(0); }
             .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
             .security-hero h1 { font-size: 2rem; }
+            /* Ajuste responsive para el hero */
+            .security-hero {
+                padding: 3rem 0;
+            }
         }
         @media (max-width: 480px) {
             .logo-img { height: 45px; }

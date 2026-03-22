@@ -35,10 +35,11 @@
             background-color: var(--offwhite);
             line-height: 1.6;
         }
+        /* Nuevo estilo de container solicitado: responsive y con padding interno */
         .container {
-            width: 95%;
-            max-width: 1250px;
-            margin: 0 auto;
+            width: min(1100px, 92%);
+            margin-inline: auto;
+            padding-inline: 20px;
         }
         h2 {
             font-size: 2.5rem;
@@ -131,9 +132,9 @@
             cursor: pointer;
             color: var(--orange);
         }
-        /* Hero */
+        /* Hero con imagen de fondo + overlay oscuro, totalmente responsive */
         .masonry-hero {
-            background: linear-gradient(135deg, #3a2a1a 0%, #0a0a0a 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/mas/albañil.png') center/cover no-repeat;
             padding: 4rem 0;
             color: white;
             text-align: center;
@@ -148,6 +149,29 @@
             max-width: 800px;
             margin: 0 auto;
         }
+
+        /* Hero con imagen de fondo (clase secundaria no utilizada pero se mantiene) */
+        .plumbing-hero {
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/mas/albañil.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 5rem 0;
+            color: white;
+            text-align: center;
+        }
+        .plumbing-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--orange);
+        }
+        .plumbing-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .btn-cotizar {
             display: inline-block;
             background: var(--orange);
@@ -194,6 +218,42 @@
             gap: 2rem;
             margin-top: 2rem;
         }
+
+        .grid-cards-servicios {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-cards-materiales {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-cards-acabados {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-cards-beneficios {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-cards-tipicos {
+             display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
         .card {
             background: white;
             border-radius: 20px;
@@ -322,6 +382,10 @@
             .main-nav.active { transform: translateY(0); }
             .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
             .masonry-hero h1 { font-size: 2rem; }
+            /* Ajuste adicional para hero en móviles: padding reducido opcional pero mantiene imagen */
+            .masonry-hero {
+                padding: 3rem 0;
+            }
         }
         @media (max-width: 480px) {
             .logo-img { height: 45px; }
@@ -363,7 +427,7 @@
     <section class="section">
         <div class="container">
             <h2>Servicios que ofrecemos</h2>
-            <div class="grid-cards">
+            <div class="grid-cards-servicios">
                 <div class="card">
                     <i class="fas fa-home"></i>
                     <h3>Construcción desde cero</h3>
@@ -391,7 +455,7 @@
     <section class="section-alt">
         <div class="container">
             <h2>Materiales y técnicas de calidad</h2>
-            <div class="grid-cards">
+            <div class="grid-cards-materiales">
                 <div class="card">
                     <i class="fas fa-cubes"></i>
                     <h3>Materiales de primera</h3>
@@ -419,7 +483,7 @@
     <section class="section">
         <div class="container">
             <h2>Tipos de acabados y aplicaciones</h2>
-            <div class="grid-cards">
+            <div class="grid-cards-acabados">
                 <div class="card">
                     <i class="fas fa-paint-roller"></i>
                     <h3>Acabados interiores</h3>
@@ -447,9 +511,9 @@
     <section class="section-alt">
         <div class="container">
             <h2>Tabla comparativa: Tipos de construcción</h2>
-            表
+            <table>
                 <thead>
-                    <tr><th>Concepto</th><th>Construcción tradicional</th><th>Remodelación</th><th>Ampliación</th>\
+                    <tr><th>Concepto</th><th>Construcción tradicional</th><th>Remodelación</th><th>Ampliación</th></tr>
                 </thead>
                 <tbody>
                     <tr><td>Plazo estimado</td><td>3 a 6 meses</td><td>1 a 3 meses</td><td>2 a 4 meses</td></tr>
@@ -458,14 +522,14 @@
                     <tr><td>Nivel de afectación</td><td>Total</td><td>Parcial</td><td>Medio (depende de integración)</td></tr>
                     <tr><td>Beneficio principal</td><td>Vivienda nueva a tu gusto</td><td>Modernización y plusvalía</td><td>Más espacio funcional</td></tr>
                 </tbody>
-            表
+            </table>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
             <h2>Proyectos típicos en albañilería residencial</h2>
-            <div class="grid-cards">
+            <div class="grid-cards-tipicos">
                 <div class="card">
                     <i class="fas fa-building"></i>
                     <h3>Casas unifamiliares</h3>
@@ -493,7 +557,7 @@
     <section class="section-alt">
         <div class="container">
             <h2>Beneficios de contratar a IMBE</h2>
-            <div class="grid-cards">
+            <div class="grid-cards-beneficios">
                 <div class="card">
                     <i class="fas fa-chalkboard-user"></i>
                     <h3>Asesoría integral</h3>
