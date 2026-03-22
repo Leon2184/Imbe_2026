@@ -35,7 +35,6 @@
             background-color: var(--offwhite);
             line-height: 1.6;
         }
-        /* Nuevo estilo de container solicitado: responsive y con padding interno */
         .container {
             width: min(1100px, 92%);
             margin-inline: auto;
@@ -132,7 +131,7 @@
             cursor: pointer;
             color: var(--orange);
         }
-        /* Hero con imagen de fondo + overlay oscuro, totalmente responsive */
+        /* Hero */
         .masonry-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/mas/albañil.png') center/cover no-repeat;
             padding: 4rem 0;
@@ -149,8 +148,6 @@
             max-width: 800px;
             margin: 0 auto;
         }
-
-        /* Hero con imagen de fondo (clase secundaria no utilizada pero se mantiene) */
         .plumbing-hero {
             position: relative;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/mas/albañil.jpg');
@@ -210,7 +207,7 @@
         }
         .section-alt {
             background: var(--offwhite);
-            padding: 3rem;
+            padding: 4rem 0;
         }
         .grid-cards {
             display: grid;
@@ -219,37 +216,14 @@
             margin-top: 2rem;
         }
 
-        .grid-cards-servicios {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .grid-cards-materiales {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .grid-cards-acabados {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .grid-cards-beneficios {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
+        /* Todas las grillas de servicios, materiales, acabados, beneficios, tipicos */
+        .grid-cards-servicios,
+        .grid-cards-materiales,
+        .grid-cards-acabados,
+        .grid-cards-beneficios,
         .grid-cards-tipicos {
-             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -275,6 +249,11 @@
         .card p {
             color: #4a4a4a;
         }
+        /* Tabla responsiva */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -282,7 +261,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin: 2rem 0;
+            min-width: 500px; /* para que en móvil sea desplazable pero mantenga estructura */
         }
         th, td {
             padding: 1rem;
@@ -363,6 +342,8 @@
         }
         .footer-logo { height: 60px; background: #0a0a0a; border-radius: 8px; }
         .footer-copyright { text-align: center; padding-top: 2rem; font-size: 0.9rem; color: #777; }
+        
+        /* ========== MEDIA QUERIES PARA RESPONSIVIDAD TOTAL ========== */
         @media (max-width: 992px) {
             .brand-name { font-size: 1.2rem; }
         }
@@ -382,15 +363,80 @@
             .main-nav.active { transform: translateY(0); }
             .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
             .masonry-hero h1 { font-size: 2rem; }
-            /* Ajuste adicional para hero en móviles: padding reducido opcional pero mantiene imagen */
-            .masonry-hero {
+            .masonry-hero { padding: 3rem 0; }
+            
+            /* TABLET: grillas pasan a 2 columnas */
+            .grid-cards-servicios,
+            .grid-cards-materiales,
+            .grid-cards-acabados,
+            .grid-cards-beneficios,
+            .grid-cards-tipicos {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .section, .section-alt {
                 padding: 3rem 0;
             }
+            h2 {
+                font-size: 2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-brand {
+                justify-content: center;
+            }
         }
-        @media (max-width: 480px) {
-            .logo-img { height: 45px; }
-            .brand-name { font-size: 0.9rem; white-space: normal; }
-            h2 { font-size: 1.8rem; }
+        @media (max-width: 560px) {
+            /* MÓVIL: todas las grillas a 1 columna */
+            .grid-cards-servicios,
+            .grid-cards-materiales,
+            .grid-cards-acabados,
+            .grid-cards-beneficios,
+            .grid-cards-tipicos {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .masonry-hero h1 {
+                font-size: 1.8rem;
+            }
+            .masonry-hero p {
+                font-size: 1rem;
+            }
+            .btn-cotizar, .btn-regresar {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .brand-name {
+                font-size: 1rem;
+                white-space: normal;
+                text-align: left;
+                max-width: 160px;
+            }
+            .logo-img {
+                height: 45px;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                left: 20px;
+            }
         }
     </style>
 </head>
@@ -511,18 +557,20 @@
     <section class="section-alt">
         <div class="container">
             <h2>Tabla comparativa: Tipos de construcción</h2>
-            <table>
-                <thead>
-                    <tr><th>Concepto</th><th>Construcción tradicional</th><th>Remodelación</th><th>Ampliación</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Plazo estimado</td><td>3 a 6 meses</td><td>1 a 3 meses</td><td>2 a 4 meses</td></tr>
-                    <tr><td>Permisos requeridos</td><td>Licencia de construcción</td><td>Puede requerir permiso</td><td>Licencia de construcción</td></tr>
-                    <tr><td>Supervisión técnica</td><td>Ingeniero civil</td><td>Arquitecto / ingeniero</td><td>Ingeniero civil</td></tr>
-                    <tr><td>Nivel de afectación</td><td>Total</td><td>Parcial</td><td>Medio (depende de integración)</td></tr>
-                    <tr><td>Beneficio principal</td><td>Vivienda nueva a tu gusto</td><td>Modernización y plusvalía</td><td>Más espacio funcional</td></tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Concepto</th><th>Construcción tradicional</th><th>Remodelación</th><th>Ampliación</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Plazo estimado</td><td>3 a 6 meses</td><td>1 a 3 meses</td><td>2 a 4 meses</td></tr>
+                        <tr><td>Permisos requeridos</td><td>Licencia de construcción</td><td>Puede requerir permiso</td><td>Licencia de construcción</td></tr>
+                        <tr><td>Supervisión técnica</td><td>Ingeniero civil</td><td>Arquitecto / ingeniero</td><td>Ingeniero civil</td></tr>
+                        <tr><td>Nivel de afectación</td><td>Total</td><td>Parcial</td><td>Medio (depende de integración)</td></tr>
+                        <tr><td>Beneficio principal</td><td>Vivienda nueva a tu gusto</td><td>Modernización y plusvalía</td><td>Más espacio funcional</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
