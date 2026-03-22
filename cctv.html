@@ -37,9 +37,9 @@
         }
         .container {
            width: 93%;
-           max-width: 1250px;   /* antes 1400 */
+           max-width: 1250px;
            margin: 0 auto;
-           padding: 0 20px;     /* espacio interno izq y der */
+           padding: 0 20px;
         }
         h2 {
             font-size: 2.5rem;
@@ -189,7 +189,7 @@
         }
         .section-alt {
             background: var(--offwhite);
-             padding-bottom: 3rem;   /* 🔥 espacio abajo */
+            padding: 4rem 0;
         }
         .grid-cards {
             display: grid;
@@ -197,28 +197,13 @@
             gap: 2rem;
             margin-top: 2rem;
         }
-        .grid-cards-solution{
-             display: grid;
-           grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .grid-cards-tecno {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .grid-cards-compo {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
+        /* Todas las grillas específicas */
+        .grid-cards-solution,
+        .grid-cards-tecno,
+        .grid-cards-compo,
         .grid-cards-imbe {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -243,6 +228,11 @@
         .card p {
             color: #4a4a4a;
         }
+        /* Tabla responsiva */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -250,7 +240,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin: 2rem 0;
+            min-width: 500px; /* permite scroll horizontal en móvil */
         }
         th, td {
             padding: 1rem;
@@ -331,6 +321,8 @@
         }
         .footer-logo { height: 60px; background: #0a0a0a; border-radius: 8px; }
         .footer-copyright { text-align: center; padding-top: 2rem; font-size: 0.9rem; color: #777; }
+
+        /* ========== MEDIA QUERIES PARA RESPONSIVIDAD TOTAL ========== */
         @media (max-width: 992px) {
             .brand-name { font-size: 1.2rem; }
         }
@@ -350,15 +342,79 @@
             .main-nav.active { transform: translateY(0); }
             .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
             .security-hero h1 { font-size: 2rem; }
-            /* Ajuste responsive para el hero */
-            .security-hero {
+            .security-hero { padding: 3rem 0; }
+            
+            /* TABLET: grillas a 2 columnas */
+            .grid-cards-solution,
+            .grid-cards-tecno,
+            .grid-cards-compo,
+            .grid-cards-imbe {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .section, .section-alt {
                 padding: 3rem 0;
             }
+            h2 {
+                font-size: 2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-brand {
+                justify-content: center;
+            }
         }
-        @media (max-width: 480px) {
-            .logo-img { height: 45px; }
-            .brand-name { font-size: 0.9rem; white-space: normal; }
-            h2 { font-size: 1.8rem; }
+        @media (max-width: 560px) {
+            /* MÓVIL: todas las grillas a 1 columna */
+            .grid-cards-solution,
+            .grid-cards-tecno,
+            .grid-cards-compo,
+            .grid-cards-imbe,
+            .grid-cards {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .security-hero h1 {
+                font-size: 1.8rem;
+            }
+            .security-hero p {
+                font-size: 1rem;
+            }
+            .btn-cotizar, .btn-regresar {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .brand-name {
+                font-size: 1rem;
+                white-space: normal;
+                text-align: left;
+                max-width: 160px;
+            }
+            .logo-img {
+                height: 45px;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                left: 20px;
+            }
         }
     </style>
 </head>
@@ -479,18 +535,20 @@
     <section class="section-alt">
         <div class="container">
             <h2>Tabla comparativa de tecnologías</h2>
-            <table>
-                <thead>
-                    <tr><th>Sistema</th><th>Características clave</th><th>Aplicación recomendada</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Videovigilancia 4K</td><td>Imagen ultra HD, zoom digital sin pérdida, visión nocturna hasta 50 m</td><td>Industria, bancos, centros comerciales</td></tr>
-                    <tr><td>Control de acceso biométrico</td><td>Huella digital + tarjeta, registro de eventos, anti-passback</td><td>Oficinas, áreas restringidas, data centers</td></tr>
-                    <tr><td>Alarma perimetral</td><td>Detectores de movimiento dual tecnología (PIR + microondas), barreras activas</td><td>Residencias, almacenes, perímetros extensos</td></tr>
-                    <tr><td>Cerca eléctrica</td><td>Alta tensión de baja energía, disuasiva, integración con alarma</td><td>Terrenos, fábricas, granjas, escuelas</td></tr>
-                    <tr><td>Reconocimiento de placas</td><td>Captura automática, listas blancas/negras, alertas en tiempo real</td><td>Estacionamientos, accesos vehiculares</td></tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Sistema</th><th>Características clave</th><th>Aplicación recomendada</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Videovigilancia 4K</td><td>Imagen ultra HD, zoom digital sin pérdida, visión nocturna hasta 50 m</td><td>Industria, bancos, centros comerciales</td></tr>
+                        <tr><td>Control de acceso biométrico</td><td>Huella digital + tarjeta, registro de eventos, anti-passback</td><td>Oficinas, áreas restringidas, data centers</td></tr>
+                        <tr><td>Alarma perimetral</td><td>Detectores de movimiento dual tecnología (PIR + microondas), barreras activas</td><td>Residencias, almacenes, perímetros extensos</td></tr>
+                        <tr><td>Cerca eléctrica</td><td>Alta tensión de baja energía, disuasiva, integración con alarma</td><td>Terrenos, fábricas, granjas, escuelas</td></tr>
+                        <tr><td>Reconocimiento de placas</td><td>Captura automática, listas blancas/negras, alertas en tiempo real</td><td>Estacionamientos, accesos vehiculares</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
