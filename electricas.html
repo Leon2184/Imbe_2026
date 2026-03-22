@@ -37,9 +37,9 @@
         }
         .container {
             width: 90%;
-            max-width: 1200px;   /* antes 1400 */
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;     /* espacio interno izq y der */
+            padding: 0 20px;
         }
         h2 {
             font-size: 2.5rem;
@@ -132,7 +132,7 @@
             cursor: pointer;
             color: var(--orange);
         }
-        /* Hero con imagen de fondo + overlay oscuro, totalmente responsive */
+        /* Hero */
         .elec-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('img/mas/electrica.png') center/cover no-repeat;
             padding: 4rem 0;
@@ -180,13 +180,22 @@
             background: var(--orange);
             color: var(--black);
         }
-        /* Secciones comunes */
+        /* Secciones */
         .section {
             padding: 4rem 0;
             background: white;
         }
         .section-alt {
             background: var(--offwhite);
+            padding: 4rem 0;
+        }
+        /* Grillas base: 4 columnas en desktop */
+        .grid-cards-insta,
+        .grid-cards-resi {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
         }
         .grid-cards {
             display: grid;
@@ -194,20 +203,6 @@
             gap: 2rem;
             margin-top: 2rem;
         }
-         .grid-cards-insta {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .grid-cards-resi {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
         .card {
             background: white;
             border-radius: 20px;
@@ -229,6 +224,11 @@
         .card p {
             color: #4a4a4a;
         }
+        /* Tabla responsiva */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -236,7 +236,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin: 2rem 0;
+            min-width: 500px;
         }
         th, td {
             padding: 1rem;
@@ -317,6 +317,8 @@
         }
         .footer-logo { height: 60px; background: #0a0a0a; border-radius: 8px; }
         .footer-copyright { text-align: center; padding-top: 2rem; font-size: 0.9rem; color: #777; }
+
+        /* ========== MEDIA QUERIES PARA RESPONSIVIDAD TOTAL ========== */
         @media (max-width: 992px) {
             .brand-name { font-size: 1.2rem; }
         }
@@ -336,15 +338,78 @@
             .main-nav.active { transform: translateY(0); }
             .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
             .elec-hero h1 { font-size: 2rem; }
-            /* Ajuste responsive adicional para el hero */
-            .elec-hero {
+            .elec-hero { padding: 3rem 0; }
+            
+            /* TABLET: grillas a 2 columnas */
+            .grid-cards-insta,
+            .grid-cards-resi {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .section, .section-alt {
                 padding: 3rem 0;
             }
+            h2 {
+                font-size: 2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-brand {
+                justify-content: center;
+            }
         }
-        @media (max-width: 480px) {
-            .logo-img { height: 45px; }
-            .brand-name { font-size: 0.9rem; white-space: normal; }
-            h2 { font-size: 1.8rem; }
+        @media (max-width: 560px) {
+            /* MÓVIL: grillas a 1 columna */
+            .grid-cards-insta,
+            .grid-cards-resi {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .grid-cards {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .elec-hero h1 {
+                font-size: 1.8rem;
+            }
+            .elec-hero p {
+                font-size: 1rem;
+            }
+            .btn-cotizar, .btn-regresar {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .brand-name {
+                font-size: 1rem;
+                white-space: normal;
+                text-align: left;
+                max-width: 160px;
+            }
+            .logo-img {
+                height: 45px;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                left: 20px;
+            }
         }
     </style>
 </head>
@@ -471,17 +536,19 @@
     <section class="section-alt">
         <div class="container">
             <h2>Tabla de servicios complementarios</h2>
-            <table>
-                <thead>
-                    <tr><th>Servicio</th><th>Descripción</th><th>Beneficio</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Termografía infrarroja</td><td>Detección de puntos calientes en tableros, conexiones y motores.</td><td>Prevención de fallas y paros no programados.</td></tr>
-                    <tr><td>Análisis de calidad de energía</td><td>Registro de armónicos, factor de potencia, transitorios.</td><td>Optimización del consumo y vida útil de equipos.</td></tr>
-                    <tr><td>Mantenimiento predictivo</td><td>Inspecciones periódicas con equipos especializados.</td><td>Reducción de costos de operación y mayor confiabilidad.</td></tr>
-                    <tr><td>Diseño asistido por computadora</td><td>Planos eléctricos unifilares y arquitectónicos en AutoCAD.</td><td>Claridad en la ejecución y documentación actualizada.</td></tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Servicio</th><th>Descripción</th><th>Beneficio</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Termografía infrarroja</td><td>Detección de puntos calientes en tableros, conexiones y motores.</td><td>Prevención de fallas y paros no programados.</td></tr>
+                        <tr><td>Análisis de calidad de energía</td><td>Registro de armónicos, factor de potencia, transitorios.</td><td>Optimización del consumo y vida útil de equipos.</td></tr>
+                        <tr><td>Mantenimiento predictivo</td><td>Inspecciones periódicas con equipos especializados.</td><td>Reducción de costos de operación y mayor confiabilidad.</td></tr>
+                        <tr><td>Diseño asistido por computadora</td><td>Planos eléctricos unifilares y arquitectónicos en AutoCAD.</td><td>Claridad en la ejecución y documentación actualizada.</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
