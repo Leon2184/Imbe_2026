@@ -37,9 +37,9 @@
         }
         .container {
             width: 90%;
-            max-width: 1200px;   /* antes 1400 */
-           margin: 0 auto;
-           padding: 0 20px;     /* espacio interno izq y der */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         h2 {
             font-size: 2.5rem;
@@ -134,7 +134,7 @@
         }
         /* Hero */
         .web-hero {
-            background: linear-gradient(135deg, #1a2a3a 0%, #0a0a0a 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('img/mas/scada.png') center/cover no-repeat;
             padding: 4rem 0;
             color: white;
             text-align: center;
@@ -187,11 +187,11 @@
         }
         .section-alt {
             background: var(--offwhite);
-            padding: 3rem;
+            padding: 4rem 0;
         }
         .grid-cards {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -216,6 +216,11 @@
         .card p {
             color: #4a4a4a;
         }
+        /* Tabla responsiva */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -223,7 +228,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin: 2rem 0;
+            min-width: 500px;
         }
         th, td {
             padding: 1rem;
@@ -304,6 +309,8 @@
         }
         .footer-logo { height: 60px; background: #0a0a0a; border-radius: 8px; }
         .footer-copyright { text-align: center; padding-top: 2rem; font-size: 0.9rem; color: #777; }
+
+        /* ========== MEDIA QUERIES PARA RESPONSIVIDAD TOTAL ========== */
         @media (max-width: 992px) {
             .brand-name { font-size: 1.2rem; }
         }
@@ -323,11 +330,72 @@
             .main-nav.active { transform: translateY(0); }
             .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
             .web-hero h1 { font-size: 2rem; }
+            .web-hero { padding: 3rem 0; }
+
+            /* TABLET: grillas a 2 columnas */
+            .grid-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .section, .section-alt {
+                padding: 3rem 0;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-brand {
+                justify-content: center;
+            }
         }
-        @media (max-width: 480px) {
-            .logo-img { height: 45px; }
-            .brand-name { font-size: 0.9rem; white-space: normal; }
-            h2 { font-size: 1.8rem; }
+        @media (max-width: 560px) {
+            /* MÓVIL: grillas a 1 columna */
+            .grid-cards {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .web-hero h1 {
+                font-size: 1.8rem;
+            }
+            .web-hero p {
+                font-size: 1rem;
+            }
+            .btn-cotizar, .btn-regresar {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .brand-name {
+                font-size: 1rem;
+                white-space: normal;
+                text-align: left;
+                max-width: 160px;
+            }
+            .logo-img {
+                height: 45px;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                left: 20px;
+            }
         }
     </style>
 </head>
@@ -450,18 +518,20 @@
     <section class="section-alt">
         <div class="container">
             <h2>Comparativa: Soluciones Web vs SCADA</h2>
-            <table>
-                <thead>
-                    <tr><th>Característica</th><th>Desarrollo Web</th><th>Sistemas SCADA</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Enfoque principal</td><td>Presencia digital, ventas, comunicación</td><td>Control industrial, monitoreo de procesos</td></tr>
-                    <tr><td>Usuarios típicos</td><td>Clientes, proveedores, público general</td><td>Operadores, supervisores, ingenieros</td></tr>
-                    <tr><td>Integración con hardware</td><td>Pasarelas de pago, APIs externas</td><td>PLCs, sensores, RTUs, actuadores</td></tr>
-                    <tr><td>Disponibilidad</td><td>24/7, hosting en la nube</td><td>Tiempo real con redundancia industrial</td></tr>
-                    <tr><td>Ejemplos de aplicación</td><td>E-commerce, portales, blogs</td><td>Plantas de proceso, energía, agua</td></tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                 <table>
+                    <thead>
+                        <tr><th>Característica</th><th>Desarrollo Web</th><th>Sistemas SCADA</th> </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Enfoque principal</td><td>Presencia digital, ventas, comunicación</td><td>Control industrial, monitoreo de procesos</td> </tr>
+                        <tr><td>Usuarios típicos</td><td>Clientes, proveedores, público general</td><td>Operadores, supervisores, ingenieros</td> </tr>
+                        <tr><td>Integración con hardware</td><td>Pasarelas de pago, APIs externas</td><td>PLCs, sensores, RTUs, actuadores</td> </tr>
+                        <tr><td>Disponibilidad</td><td>24/7, hosting en la nube</td><td>Tiempo real con redundancia industrial</td> </tr>
+                        <tr><td>Ejemplos de aplicación</td><td>E-commerce, portales, blogs</td><td>Plantas de proceso, energía, agua</td> </tr>
+                    </tbody>
+                 </table>
+            </div>
         </div>
     </section>
 

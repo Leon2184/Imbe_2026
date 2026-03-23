@@ -39,6 +39,7 @@
             width: 95%;
             max-width: 1300px;
             margin: 0 auto;
+            padding: 0 20px; /* Agregado para evitar que el texto toque los bordes */
         }
         h2 {
             font-size: 2.5rem;
@@ -133,7 +134,7 @@
         }
         /* Hero */
         .renewable-hero {
-            background: linear-gradient(135deg, #1e3a2f 0%, #0a0a0a 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('img/mas/renovable.png') center/cover no-repeat;
             padding: 4rem 0;
             color: white;
             text-align: center;
@@ -186,7 +187,7 @@
         }
         .section-alt {
             background: var(--offwhite);
-            padding: 3rem;
+            padding: 4rem 0;
         }
         .grid-cards {
             display: grid;
@@ -215,6 +216,11 @@
         .card p {
             color: #4a4a4a;
         }
+        /* Tabla responsiva */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -222,7 +228,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin: 2rem 0;
+            min-width: 500px;
         }
         th, td {
             padding: 1rem;
@@ -303,6 +309,8 @@
         }
         .footer-logo { height: 60px; background: #0a0a0a; border-radius: 8px; }
         .footer-copyright { text-align: center; padding-top: 2rem; font-size: 0.9rem; color: #777; }
+
+        /* ========== MEDIA QUERIES PARA RESPONSIVIDAD TOTAL ========== */
         @media (max-width: 992px) {
             .brand-name { font-size: 1.2rem; }
         }
@@ -322,11 +330,68 @@
             .main-nav.active { transform: translateY(0); }
             .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
             .renewable-hero h1 { font-size: 2rem; }
+            .renewable-hero { padding: 3rem 0; }
+
+            /* Ajustes de espaciado */
+            .section, .section-alt {
+                padding: 3rem 0;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-brand {
+                justify-content: center;
+            }
         }
-        @media (max-width: 480px) {
-            .logo-img { height: 45px; }
-            .brand-name { font-size: 0.9rem; white-space: normal; }
-            h2 { font-size: 1.8rem; }
+        @media (max-width: 560px) {
+            /* MÓVIL: grillas a 1 columna (auto-fit ya lo haría, pero forzamos para más control) */
+            .grid-cards {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .renewable-hero h1 {
+                font-size: 1.8rem;
+            }
+            .renewable-hero p {
+                font-size: 1rem;
+            }
+            .btn-cotizar, .btn-regresar {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .brand-name {
+                font-size: 1rem;
+                white-space: normal;
+                text-align: left;
+                max-width: 160px;
+            }
+            .logo-img {
+                height: 45px;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                left: 20px;
+            }
         }
     </style>
 </head>
@@ -419,18 +484,20 @@
     <section class="section">
         <div class="container">
             <h2>Tabla comparativa de sistemas solares</h2>
-            <table>
-                <thead>
-                    <tr><th>Tipo de sistema</th><th>On-grid (interconectado)</th><th>Off-grid (aislado)</th><th>Híbrido</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Conectado a CFE</td><td>✅ Sí</td><td>❌ No</td><td>✅ Sí</td></tr>
-                    <tr><td>Baterías</td><td>Opcional (para respaldo)</td><td>✅ Obligatorias</td><td>✅ Incluidas</td></tr>
-                    <tr><td>Ahorro en recibo</td><td>Hasta 95%</td><td>100% (sin recibo)</td><td>Hasta 95% + respaldo</td></tr>
-                    <tr><td>Costo de inversión</td><td>Medio</td><td>Alto (por baterías)</td><td>Alto</td></tr>
-                    <tr><td>Aplicación recomendada</td><td>Casas, comercios, industrias con red CFE estable</td><td>Zonas rurales, campos, proyectos sin CFE</td><td>Viviendas que buscan autonomía ante cortes</td></tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                 <table>
+                    <thead>
+                         <tr><th>Tipo de sistema</th><th>On-grid (interconectado)</th><th>Off-grid (aislado)</th><th>Híbrido</th></tr>
+                    </thead>
+                    <tbody>
+                         <tr><td>Conectado a CFE</td><td>✅ Sí</td><td>❌ No</td><td>✅ Sí</td></tr>
+                         <tr><td>Baterías</td><td>Opcional (para respaldo)</td><td>✅ Obligatorias</td><td>✅ Incluidas</td></tr>
+                         <tr><td>Ahorro en recibo</td><td>Hasta 95%</td><td>100% (sin recibo)</td><td>Hasta 95% + respaldo</td></tr>
+                         <tr><td>Costo de inversión</td><td>Medio</td><td>Alto (por baterías)</td><td>Alto</td></tr>
+                         <tr><td>Aplicación recomendada</td><td>Casas, comercios, industrias con red CFE estable</td><td>Zonas rurales, campos, proyectos sin CFE</td><td>Viviendas que buscan autonomía ante cortes</td></tr>
+                    </tbody>
+                 </table>
+            </div>
         </div>
     </section>
 

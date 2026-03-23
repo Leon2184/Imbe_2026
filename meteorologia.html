@@ -36,10 +36,10 @@
             line-height: 1.6;
         }
         .container {
-             width: 90%;
-             max-width: 1100px;   /* antes 1400 */
-             margin: 0 auto;
-             padding: 0 20px;     /* espacio interno izq y der */  
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         h2 {
             font-size: 2.5rem;
@@ -55,7 +55,7 @@
             background: var(--orange);
             margin-top: 0.5rem;
         }
-        /* Header (mismo estilo que index) */
+        /* Header */
         .main-header {
             background: #0a0a0a;
             padding: 1rem 0;
@@ -134,7 +134,7 @@
         }
         /* Hero meteorología */
         .meteo-hero {
-            background: linear-gradient(135deg, #0a2f44 0%, #0a0a0a 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('img/mas/meteorologia.png') center/cover no-repeat;
             padding: 4rem 0;
             color: white;
             text-align: center;
@@ -149,7 +149,7 @@
             max-width: 800px;
             margin: 0 auto;
         }
-        /* Sección sensores y variables */
+        /* Secciones */
         .sensors-section, .variables-section, .benefits-section, .applications-section {
             padding: 4rem 0;
             background: white;
@@ -161,15 +161,12 @@
             gap: 2rem;
             margin-top: 2rem;
         }
-        
-        .benefits-grid{
+        .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 🔥 SIEMPRE 4 */
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-top: 2rem;
-
         }
-
         .sensor-card, .variable-card, .benefit-card, .app-card {
             background: white;
             border-radius: 20px;
@@ -219,7 +216,7 @@
             background: var(--orange);
             color: var(--black);
         }
-        /* Tabla de variables adicional */
+        /* Tabla responsiva */
         .variable-table {
             overflow-x: auto;
             margin: 2rem 0;
@@ -231,6 +228,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            min-width: 500px;
         }
         th, td {
             padding: 1rem;
@@ -311,6 +309,8 @@
         }
         .footer-logo { height: 60px; background: #0a0a0a; border-radius: 8px; }
         .footer-copyright { text-align: center; padding-top: 2rem; font-size: 0.9rem; color: #777; }
+
+        /* ========== MEDIA QUERIES PARA RESPONSIVIDAD TOTAL ========== */
         @media (max-width: 992px) {
             .brand-name { font-size: 1.2rem; }
         }
@@ -330,11 +330,77 @@
             .main-nav.active { transform: translateY(0); }
             .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
             .meteo-hero h1 { font-size: 2rem; }
+            .meteo-hero { padding: 3rem 0; }
+
+            /* TABLET: beneficios a 2 columnas */
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .sensors-section, .variables-section, .benefits-section, .applications-section {
+                padding: 3rem 0;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-brand {
+                justify-content: center;
+            }
         }
-        @media (max-width: 480px) {
-            .logo-img { height: 45px; }
-            .brand-name { font-size: 0.9rem; white-space: normal; }
-            h2 { font-size: 1.8rem; }
+        @media (max-width: 560px) {
+            /* MÓVIL: beneficios a 1 columna */
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            /* Otras grillas se adaptan automáticamente con auto-fit, pero forzamos si es necesario */
+            .sensors-grid, .variables-grid, .apps-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .sensor-card, .variable-card, .benefit-card, .app-card {
+                padding: 1.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .meteo-hero h1 {
+                font-size: 1.8rem;
+            }
+            .meteo-hero p {
+                font-size: 1rem;
+            }
+            .btn-cotizar, .btn-regresar {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .brand-name {
+                font-size: 1rem;
+                white-space: normal;
+                text-align: left;
+                max-width: 160px;
+            }
+            .logo-img {
+                height: 45px;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                left: 20px;
+            }
         }
     </style>
 </head>
@@ -465,30 +531,12 @@
         <div class="container">
             <h2>Aplicaciones industriales y científicas</h2>
             <div class="apps-grid">
-                <div class="app-card">
-                    <h3>🏭 Sector energético</h3>
-                    <p>Monitoreo de recurso eólico y solar para parques renovables, evaluación de impacto ambiental y predicción de generación.</p>
-                </div>
-                <div class="app-card">
-                    <h3>🚢 Marítimo y portuario</h3>
-                    <p>Estaciones en muelles, plataformas y embarcaciones para seguridad de maniobras, oleaje y condiciones de viento.</p>
-                </div>
-                <div class="app-card">
-                    <h3>🌾 Agricultura de precisión</h3>
-                    <p>Redes de estaciones agrometeorológicas para optimización de riego, control de heladas y gestión de cultivos.</p>
-                </div>
-                <div class="app-card">
-                    <h3>🏙️ Monitoreo urbano</h3>
-                    <p>Redes de sensores de calidad del aire y variables climáticas para alertas tempranas y planeación urbana.</p>
-                </div>
-                <div class="app-card">
-                    <h3>🔬 Investigación y educación</h3>
-                    <p>Equipos de alta precisión para proyectos de cambio climático, hidrología, meteorología sinóptica y estudios atmosféricos.</p>
-                </div>
-                <div class="app-card">
-                    <h3>🛢️ Industria petrolera</h3>
-                    <p>Monitoreo de vientos, oleaje y condiciones extremas para seguridad operativa en instalaciones costa afuera y terrestres.</p>
-                </div>
+                <div class="app-card"><h3>🏭 Sector energético</h3><p>Monitoreo de recurso eólico y solar para parques renovables, evaluación de impacto ambiental y predicción de generación.</p></div>
+                <div class="app-card"><h3>🚢 Marítimo y portuario</h3><p>Estaciones en muelles, plataformas y embarcaciones para seguridad de maniobras, oleaje y condiciones de viento.</p></div>
+                <div class="app-card"><h3>🌾 Agricultura de precisión</h3><p>Redes de estaciones agrometeorológicas para optimización de riego, control de heladas y gestión de cultivos.</p></div>
+                <div class="app-card"><h3>🏙️ Monitoreo urbano</h3><p>Redes de sensores de calidad del aire y variables climáticas para alertas tempranas y planeación urbana.</p></div>
+                <div class="app-card"><h3>🔬 Investigación y educación</h3><p>Equipos de alta precisión para proyectos de cambio climático, hidrología, meteorología sinóptica y estudios atmosféricos.</p></div>
+                <div class="app-card"><h3>🛢️ Industria petrolera</h3><p>Monitoreo de vientos, oleaje y condiciones extremas para seguridad operativa en instalaciones costa afuera y terrestres.</p></div>
             </div>
         </div>
     </section>
