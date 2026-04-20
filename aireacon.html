@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>IMBE | Climatización & Aire Acondicionado – Instalación, mantenimiento y eficiencia</title>
+    <meta name="description" content="Expertos en sistemas de aire acondicionado y climatización: instalación de minisplits, sistemas VRV/VRF, mantenimiento preventivo, reparación y soluciones de eficiencia energética. Servicio profesional en Campeche.">
+    <meta name="keywords" content="aire acondicionado, climatización, minisplit, sistema VRV, mantenimiento AC, instalación de AC, IMBE, Campeche, eficiencia energética">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --orange: #f15a24;
+            --orange-dark: #d44d1a;
+            --black: #0a0a0a;
+            --black-light: #1a1a1a;
+            --gray-dark: #2a2a2a;
+            --gray-medium: #3a3a3a;
+            --white: #ffffff;
+            --offwhite: #f5f5f5;
+            --text-light: #dddddd;
+            --shadow: 0 15px 30px -10px rgba(0,0,0,0.3);
+            --transition: all 0.25s ease-in-out;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #222;
+            background-color: var(--offwhite);
+            line-height: 1.6;
+        }
+        .container {
+           width: 93%;
+           max-width: 1250px;
+           margin: 0 auto;
+           padding: 0 20px;
+        }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--orange);
+            margin-top: 0.5rem;
+        }
+        /* Header */
+        .main-header {
+            background: #0a0a0a;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-flex {
+            width: 96%;
+            max-width: 1400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        .logo-img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--orange);
+            white-space: nowrap;
+        }
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .main-nav a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        .main-nav a:hover { color: var(--orange); }
+        .main-nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            bottom: -6px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        .main-nav a:hover:after { width: 100%; }
+        .btn-contact-nav {
+            background: var(--orange);
+            color: var(--black) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 700;
+        }
+        .btn-contact-nav:hover {
+            background: var(--white);
+            color: var(--black) !important;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--orange);
+        }
+
+        /* Hero con imagen de fondo (aire acondicionado) */
+        .security-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('img/servicios/climas.png') center/cover no-repeat;
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+        }
+        .security-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--orange);
+        }
+        .security-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .btn-cotizar {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--black);
+            font-weight: 700;
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 12px rgba(241,90,36,0.4);
+        }
+        .btn-cotizar:hover {
+            background: var(--black);
+            color: white;
+        }
+        .btn-regresar {
+            display: inline-block;
+            margin-top: 2rem;
+            background: var(--black);
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .btn-regresar:hover {
+            background: var(--orange);
+            color: var(--black);
+        }
+        /* Secciones */
+        .section {
+            padding: 4rem 0;
+            background: white;
+        }
+        .section-alt {
+            background: var(--offwhite);
+            padding: 4rem 0;
+        }
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .grid-cards-solution,
+        .grid-cards-tecno,
+        .grid-cards-compo,
+        .grid-cards-imbe {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-left: 5px solid var(--orange);
+        }
+        .card i {
+            font-size: 2rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        .card p {
+            color: #4a4a4a;
+        }
+        .table-responsive {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            min-width: 500px;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: var(--orange);
+            color: var(--black);
+            font-weight: 700;
+        }
+        tr:hover {
+            background: #f9f9f9;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b359;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--orange);
+            color: var(--black);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .main-footer {
+            background: var(--black);
+            color: #bbb;
+            padding: 2.5rem 0 1.5rem;
+            border-top: 2px solid var(--orange);
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .footer-logo { height: 60px; background: #0a0a0a; border-radius: 8px; }
+        .footer-copyright { text-align: center; padding-top: 2rem; font-size: 0.9rem; color: #777; }
+
+        /* ========== MEDIA QUERIES ========== */
+        @media (max-width: 992px) {
+            .brand-name { font-size: 1.2rem; }
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .main-nav {
+                position: fixed;
+                top: 85px;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                padding: 2rem;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                z-index: 999;
+            }
+            .main-nav.active { transform: translateY(0); }
+            .main-nav ul { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+            .security-hero h1 { font-size: 2rem; }
+            .security-hero { padding: 3rem 0; }
+            .grid-cards-solution,
+            .grid-cards-tecno,
+            .grid-cards-compo,
+            .grid-cards-imbe {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .section, .section-alt { padding: 3rem 0; }
+            h2 { font-size: 2rem; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-brand { justify-content: center; }
+        }
+        @media (max-width: 560px) {
+            .grid-cards-solution,
+            .grid-cards-tecno,
+            .grid-cards-compo,
+            .grid-cards-imbe,
+            .grid-cards {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .card { padding: 1.2rem; }
+            h2 { font-size: 1.8rem; }
+            .security-hero h1 { font-size: 1.8rem; }
+            .security-hero p { font-size: 1rem; }
+            .btn-cotizar, .btn-regresar { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+            .brand-name { font-size: 1rem; white-space: normal; max-width: 160px; }
+            .logo-img { height: 45px; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.7rem; bottom: 20px; right: 20px; }
+            .back-to-top { width: 45px; height: 45px; font-size: 1.2rem; bottom: 20px; left: 20px; }
+        }
+    </style>
+</head>
+<body>
+<header class="main-header">
+    <div class="header-flex">
+        <div class="logo-area">
+            <img src="img/logo1.png" alt="Logo IMBE" class="logo-img" loading="lazy" onerror="this.src='https://placehold.co/200x80?text=IMBE'">
+            <span class="brand-name">Ingeniería y Multiservicios Benítez</span>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#nosotros">Expertise</a></li>
+                <li><a href="index.html#clientes">Clientes</a></li>
+                <li><a href="index.html#proyectos">Proyectos</a></li>
+                <li><a href="index.html#contacto" class="btn-contact-nav">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></div>
+    </div>
+</header>
+
+<main>
+    <section class="security-hero">
+        <div class="container">
+            <h1>Sistemas de Aire Acondicionado & Climatización</h1>
+            <p>Instalación, mantenimiento y modernización de equipos de climatización: minisplits Inverter, sistemas VRV/VRF, centrales de alta eficiencia, control inteligente y soluciones sostenibles para tu hogar, negocio o industria.</p>
+            <a href="#contacto" class="btn-cotizar" style="margin-top: 1.5rem; display: inline-block;">Solicitar cotización sin compromiso</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Soluciones que ofrecemos</h2>
+            <div class="grid-cards-solution">
+                <div class="card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Instalación de Minisplits</h3>
+                    <p>Equipos de pared, tipo cassette, piso-techo. Tecnología Inverter para ahorro energético, bajo ruido y máxima durabilidad. Instalación profesional en tiempo récord.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-building"></i>
+                    <h3>Sistemas Centrales & VRV/VRF</h3>
+                    <p>Climatización para grandes espacios: rooftops, sistemas de expansión variable, múltiples zonas independientes, control centralizado y eficiencia superior.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Mantenimiento Especializado</h3>
+                    <p>Limpieza profunda, recarga de refrigerante, diagnóstico preventivo, calibración de termostatos y garantía de funcionamiento óptimo todo el año.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>Ductos & Climatización Integral</h3>
+                    <p>Diseño de redes de ductos, difusores, retornos de aire, aislamiento térmico y balanceo de sistemas para confort uniforme en oficinas y comercios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt">
+        <div class="container">
+            <h2>Tecnologías avanzadas</h2>
+            <div class="grid-cards-tecno">
+                <div class="card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Tecnología Inverter</h3>
+                    <p>Compresor de velocidad variable, estabilización de temperatura, ahorro hasta 60% de energía y mayor vida útil del equipo.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Control Inteligente y Wi-Fi</h3>
+                    <p>Termostatos conectados, control por voz (Alexa/Google Home), programación horaria y monitoreo remoto desde tu smartphone.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Eficiencia Energética</h3>
+                    <p>Equipos con certificación SEER/COP alto, recuperación de calor, sensores de ocupación y reducción de huella de carbono.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Equipos ecológicos</h3>
+                    <p>Refrigerantes R32, R410A de bajo impacto ambiental, cumpliendo normativas internacionales sin perder rendimiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Componentes que suministramos e instalamos</h2>
+            <div class="grid-cards-compo">
+                <div class="card">
+                    <i class="fas fa-cog"></i>
+                    <h3>Compresores de alta eficiencia</h3>
+                    <p>Scroll, rotativos y reciprocantes de primeras marcas (Daikin, Mitsubishi, LG, Samsung). Máximo rendimiento y bajo consumo.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-thermometer-half"></i>
+                    <h3>Condensadoras y evaporadoras</h3>
+                    <p>Unidades exteriores resistentes a la intemperie, serpentines de cobre, intercambiadores de calor optimizados.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>Controles y termostatos inteligentes</h3>
+                    <p>Termostatos programables, sensores de temperatura, paneles de control táctil y sistemas de automatización.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Refrigerantes y accesorios</h3>
+                    <p>Líneas de cobre, aislante térmico, drenajes, soportería, y gases refrigerantes ecológicos para cualquier sistema.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt">
+        <div class="container">
+            <h2>Tabla comparativa de tecnologías</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr><th>Sistema</th><th>Características clave</th><th>Aplicación recomendada</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Minisplit Inverter</strong></td><td>Ahorro energético hasta 60%, silencioso, control remoto, instalación sencilla, temperatura precisa.</td><td>Hogares, oficinas pequeñas, locales comerciales, habitaciones de hotel.</td></tr>
+                        <tr><td><strong>Sistema VRV/VRF</strong></td><td>Zonificación independiente, gran eficiencia, conexión de múltiples unidades interiores, recuperación de calor.</td><td>Edificios corporativos, hospitales, hoteles, centros comerciales.</td></tr>
+                        <tr><td><strong>Paquete Central (Rooftop)</strong></td><td>Todo en uno, flujo de aire de alto volumen, fácil mantenimiento, ideal para grandes áreas diáfanas.</td><td>Naves industriales, gimnasios, supermercados, auditorios.</td></tr>
+                        <tr><td><strong>Sistema de Ventana / Compacto</strong></td><td>Económico, fácil de instalar, ideal para espacios pequeños o zonas sin acceso a minisplit.</td><td>Cuartos de servicio, oficinas pequeñas, residencias económicas.</td></tr>
+                        <tr><td><strong>Sistema Ductado</strong></td><td>Oculto en plafón o falso techo, distribución uniforme, estética limpia, integración con arquitectura.</td><td>Oficinas de alto nivel, restaurantes, salas de juntas, viviendas de lujo.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Aplicaciones por sector</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Sector industrial</h3>
+                    <p>Climatización de naves de producción, almacenes con control de temperatura para materias primas, salas de servidores y cuartos eléctricos.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-building"></i>
+                    <h3>Corporativo y oficinas</h3>
+                    <p>Sistemas centrales de alta eficiencia, zonas independientes, confort para empleados y cumplimiento de estándares LEED.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-home"></i>
+                    <h3>Residencial</h3>
+                    <p>Minisplits silenciosos, sistemas multi-split, diseño a medida para fraccionamientos, departamentos y casas de lujo.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-store"></i>
+                    <h3>Comercio y retail</h3>
+                    <p>Climatización para tiendas, supermercados, centros comerciales, manteniendo temperatura ideal para productos y clientes.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-hospital-user"></i>
+                    <h3>Salud y hospitales</h3>
+                    <p>Filtración HEPA, control de humedad, presión positiva en quirófanos y zonas críticas, climatización confiable 24/7.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-server"></i>
+                    <h3>Centros de datos</h3>
+                    <p>Aire acondicionado de precisión, cooling in-row, redundancia, monitoreo remoto de temperatura y humedad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt">
+        <div class="container">
+            <h2>Beneficios de contratar IMBE</h2>
+            <div class="grid-cards-imbe">
+                <div class="card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Asesoría personalizada</h3>
+                    <p>Estudiamos tus necesidades de enfriamiento, carga térmica y presupuesto para diseñar la solución más eficiente y rentable.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Instalación profesional</h3>
+                    <p>Técnicos certificados, uso de herramientas de precisión, cumplimiento de normas NOM y garantía de mano de obra.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Soporte y mantenimiento</h3>
+                    <p>Contratos de mantenimiento preventivo, servicio técnico rápido, repuestos originales y disponibilidad 24/7 para emergencias.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-shield-virus"></i>
+                    <h3>Garantía de calidad</h3>
+                    <p>Equipos de marcas líderes, respaldo por escrito, certificaciones en eficiencia y procedimientos de calidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" style="background: var(--black-light); padding: 4rem 0; color: white;">
+        <div class="container">
+            <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+                <h2 style="color: white;">¿Necesitas un clima perfecto para tu espacio?</h2>
+                <p style="margin: 1rem 0 2rem;">Contáctanos hoy y recibe un estudio de carga térmica sin costo. Nuestros especialistas en aire acondicionado te guiarán hacia la mejor solución para tu hogar o negocio.</p>
+                <a href="https://wa.me/529381083498?text=Hola%20IMBE%2C%20me%20interesa%20el%20servicio%20de%20aire%20acondicionado%20y%20climatizaci%C3%B3n." class="btn-cotizar" style="background: #25d366; color: black; margin-right: 1rem;"><i class="fab fa-whatsapp"></i> WhatsApp directo</a>
+                <a href="index.html#contacto" class="btn-cotizar" style="background: var(--orange); color: black;">Formulario de contacto</a>
+                <div style="margin-top: 2rem;">
+                    <a href="index.html#servicios" class="btn-regresar"><i class="fas fa-arrow-left"></i> Volver a servicios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="img/logo1.png" alt="IMBE" class="footer-logo" loading="lazy" onerror="this.src='https://placehold.co/100x100?text=IMBE'">
+                <div><span class="footer-title" style="color:white; font-weight:600;">Ingeniería y Multiservicios Benítez</span>
+                    <p class="footer-desc">Soluciones integrales en climatización y eficiencia energética.</p>
+                </div>
+            </div>
+            <div>© <span id="currentYear"></span> IMBE. Todos los derechos reservados.</div>
+        </div>
+        <div class="footer-copyright">
+            <p>Más de 15 años generando confort térmico y ahorro energético para familias y empresas.</p>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/529381083498?text=Hola%20IMBE%2C%20me%20interesa%20el%20servicio%20de%20aire%20acondicionado%20y%20climatizaci%C3%B3n." class="whatsapp-float" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.main-nav');
+    if(toggle){
+        toggle.addEventListener('click', () => nav.classList.toggle('active'));
+    }
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 300) backBtn.classList.add('show');
+        else backBtn.classList.remove('show');
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+</script>
+</body>
+</html>
